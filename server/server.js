@@ -21,6 +21,10 @@ db.mongoose
     });
 
 require("./app/routes/user.routes")(app);
+require("./app/routes/admin.routes")(app);
+
+
+
 
 
 const PORT = process.env.PORT || 8000;
