@@ -11,6 +11,5 @@ module.exports = function (app) {
     });
 
     app.post("/user/signup", verifySignUp.verifyUser, controller.signup);
-    app.post("/user/signin", controller.signin);
     // app.post("/user/signout", controller.signout);
 };
