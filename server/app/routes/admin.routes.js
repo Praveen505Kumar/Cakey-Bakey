@@ -9,5 +9,5 @@ module.exports = function (app) {
 
   app.post("/admin/signup", verifySignUp.verifyAdminSignUP, controller.signup);
   app.post("/admin/signin", controller.signin);
-  // app.post("/user/signout", controller.signout);
+  app.post("/admin/signout", controller.signout);
 };
