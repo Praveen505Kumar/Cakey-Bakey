@@ -34,7 +34,7 @@ db.mongoose
     });
 
 require("./app/routes/user.routes")(app);
-require("./app/routes/admin.routes")(app);
+// require("./app/routes/admin.routes")(app);
 
 app.post("/addcat", (req, res) => {
     const category = new db.Category({
