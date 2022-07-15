@@ -3,7 +3,7 @@ const cookieSession = require("cookie-session");
 const cors = require("cors");
 const dbConfig = require("./app/config/db.config");
 const app = express();
-
+// new sample commit
 // middlewares for parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
