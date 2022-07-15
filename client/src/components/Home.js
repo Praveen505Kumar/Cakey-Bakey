@@ -1,7 +1,8 @@
 import React from 'react';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import Slides from './Slides'
+import Slides from './Slides';
+import Bestsellers from './Bestsellers'
 //import axios from 'axios';
 const Home = () => {
     document.title = "cakeybakey.com";
@@ -10,6 +11,7 @@ const Home = () => {
 
             <Navbar />
             <Slides />
+            <Bestsellers/>
             <Footer />
         </div>
     )
