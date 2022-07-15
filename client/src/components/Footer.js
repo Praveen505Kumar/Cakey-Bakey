@@ -9,7 +9,7 @@ const Footer = () => {
       <p>1161/1, 1st Floor, JINAN Towers, 24th Cross, 24th
         Main Rd,
         2nd Sector, HSR Layout, Bengaluru, Karnataka 560102</p>
-      <div> Copyright &copy; 2022</div>
+      <div> Copyright &copy; 2023</div>
       <div>
         <a className="btn btn-social-icon btn-twitter">
           <span className="fa fa-twitter"></span>
