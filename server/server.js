@@ -1,26 +1,26 @@
 const express = require("express");
-const cookieSession = require("cookie-session");
+const cookieParser = require("cookie-parser");
+const mongoose = require("mongoose");
 const cors = require("cors");
 const dbConfig = require("./app/config/db.config");
 const app = express();
-// new sample commit
+// Routes
+const authRoutes = require("./app/routes/auth");
+const userRoutes = require("./app/routes/user");
+const categoryRoutes = require("./app/routes/category");
+const productRoutes = require("./app/routes/product");
+const orderRoutes = require("./app/routes/order");
+
 // middlewares for parsing
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors({
     credentials: true,
 }));
+app.use(cookieParser());
 
-app.use(
-    cookieSession({
-        name: "Book- Mng-session",
-        secret: "COOKIE_SECRET",
-        httpOnly: true
-    })
-);
-
-const db = require("./app/models");
-db.mongoose
+// Database connection
+mongoose
     .connect(dbConfig.mongoURL, {
         useNewUrlParser: true,
         useUnifiedTopology: true
@@ -33,24 +33,29 @@ db.mongoose
         process.exit();
     });
 
-require("./app/routes/user.routes")(app);
-// require("./app/routes/admin.routes")(app);
+// My routes
+app.use("/api", authRoutes);
+app.use("/api", userRoutes);
+app.use("/api", categoryRoutes);
+app.use("/api", productRoutes);
+app.use("/api", orderRoutes);
+// require("./app/routes/user.routes")(app);
 
-app.post("/addcat", (req, res) => {
-    const category = new db.Category({
-        name: "egg cakes"
-    });
-    category.save()
-        .then((result) => {
-            res.send(result)
-        }).catch((err) => {
-            console.log(err);
-        })
-});
+// app.post("/addcat", (req, res) => {
+//     const category = new db.Category({
+//         name: "egg cakes"
+//     });
+//     category.save()
+//         .then((result) => {
+//             res.send(result)
+//         }).catch((err) => {
+//             console.log(err);
+//         })
+// });
 
 
 
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
 });
