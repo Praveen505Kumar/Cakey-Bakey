@@ -1,43 +1,19 @@
-//import * as api from "./api/api";
-import './App.css';
-//import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Signin from './user/Signin';
-import Signup from './user/Signup';
-import Home from "./components/Home";
-function App() {
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+import Home from "./components/core/Home";
+import Menu from "./components/core/Menu";
+import Signup from "./components/core/Signup";
+import Signin from "./components/core/Signin";
 
-  // const [categories, setCategories] = useState([]);
-
-  // useEffect(() => {
-  //   api.fetchCategories()
-  //     .then((res) => {
-  //       setCategories(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err.message);
-  //     });
-  // },
-  //   []
-  // );
-
-
+const App = () => {
   return (
     <BrowserRouter>
-
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route exact path="/signin" element={<Signin />} />
-        <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/" element={<Home />} />
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
       </Routes>
     </BrowserRouter>
-    // <div className="App">
-
-    //   <Home />
-    //   <ul>{categories.map((item, index) => (
-    //     <li key={index}>{item.name}</li>
-    //   ))}</ul>
-    // </div>
   );
 }
 
