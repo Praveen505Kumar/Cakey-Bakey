@@ -10,6 +10,7 @@ import Terms from "./components/about/Terms-conditions";
 import Privacy from "./components/about/privacy-policy";
 import Disclaimer from "./components/about/disclaimer";
 
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/Terms-conditions" element={<Terms/>} />
         <Route path="/privacy-policy" element={<Privacy/>} />
         <Route path="/disclaimer" element={<Disclaimer/>} />
+        
         
 
       </Routes>
