@@ -95,6 +95,9 @@
   color: white;
 }
 
+.font{
+  font-family: "Noto Sans", sans-serif
+}
 @media (max-width: 992px) {
   .nav-link {
     margin: 12px 0;

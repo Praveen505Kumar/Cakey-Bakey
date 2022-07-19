@@ -7,13 +7,13 @@ const Footer = () => {
         <div className='row mb-3'>
           <div className='company-info col-md-4'>
             <h2 className='text-start'>COMPANY</h2>
-            <NavLink exact to="/about" className="nav-link" activeClassName="nav-link-active">
+            <NavLink exact to="/Aboutus" className="nav-link" activeClassName="nav-link-active">
               ABOUT US
             </NavLink>
-            <NavLink exact to="/faq" className="nav-link" activeClassName="nav-link-active">
+            <NavLink exact to="/Faq" className="nav-link" activeClassName="nav-link-active">
               FAQ
             </NavLink>
-            <NavLink exact to="/contact" className="nav-link" activeClassName="nav-link-active">
+            <NavLink exact to="/Contactus" className="nav-link" activeClassName="nav-link-active">
               CONTACT US
             </NavLink>
           </div>
