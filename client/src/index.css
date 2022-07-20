@@ -94,13 +94,16 @@
   background-color: black;
   color: white;
 }
-.bg-1{
+
+.bg-1 {
   background-color: rgb(211, 203, 203);
 }
 
-.font{
-  font-family: "Noto Sans", sans-serif
+.font {
+  font-family: "Noto Sans", sans-serif;
+  border: radius 15px;
 }
+
 @media (max-width: 992px) {
   .nav-link {
     margin: 12px 0;

@@ -25,13 +25,6 @@ const productSchema = new mongoose.Schema({
         ref: "Category",
         required: true
     },
-    stock: {
-        type: Number,
-    },
-    sold: {
-        type: Number,
-        default: 0
-    },
     photo: {
         data: Buffer,
         contentType: String
