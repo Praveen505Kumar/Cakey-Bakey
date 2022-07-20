@@ -10,6 +10,17 @@
 .nav-link:hover {
   color: #320cb8;
 }
+.bg3{
+  background-color: lightgrey;
+}
+.bg4{
+  background-color: rgba(167, 159, 159, 0.925);
+}
+.bg5{
+  background-color: #724cf9;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+
+}
 
 .nav-link::after {
   content: "";
@@ -99,7 +110,7 @@
 }
 
 .font{
-  font-family: "Noto Sans", sans-serif
+  font-family: "Noto Sans", sans-serif;
 }
 @media (max-width: 992px) {
   .nav-link {
