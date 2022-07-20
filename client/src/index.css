@@ -11,6 +11,20 @@
   color: #320cb8;
 }
 
+.bg3 {
+  background-color: lightgrey;
+}
+
+.bg4 {
+  background-color: rgba(167, 159, 159, 0.925);
+}
+
+.bg5 {
+  background-color: #724cf9;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+
+}
+
 .nav-link::after {
   content: "";
   background-color: #724cf9;

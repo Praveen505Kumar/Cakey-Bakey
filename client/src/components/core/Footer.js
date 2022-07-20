@@ -19,7 +19,7 @@ const Footer = () => {
           </div>
           <div className='legal-info col-md-4'>
             <h2 className='text-start'>LEGAL</h2>
-            <NavLink to="/terms-conditions" className="nav-link" activeclassname="nav-link-active">
+            <NavLink to="/Terms-conditions" className="nav-link" activeclassname="nav-link-active">
               TERMS &amp; CONDITIONS
             </NavLink>
             <NavLink to="/privacy-policy" className="nav-link" activeclassname="nav-link-active">
