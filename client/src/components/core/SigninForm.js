@@ -1,17 +1,16 @@
-import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
+import { connect } from "react-redux";
+import { setAdminRole, setUserRole } from "../../redux/Status/actions";
 
-const SigninForm = () => {
+const SigninForm = (props) => {
     const [values, setValues] = useState({
         email: "",
         password: "",
-        role: 0,
         error: "",
         success: false
     });
-
-    const { email, password, error, success, role } = values;
 
     const handleChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value })
@@ -19,16 +18,22 @@ const SigninForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/signin', { email, password })
+        axios.post('http://localhost:8000/api/signin', { email: values.email, password: values.password })
             .then(response => {
                 setValues({ ...values, success: true, error: false, role: response.data.user.role });
+                if (response.data.user.role === 0) {
+                    props.setUserRole();
+                }
+                else if (response.data.user.role === 1) {
+                    props.setAdminRole();
+                }
             })
             .catch(error => {
                 setValues({ ...values, error: error.response.data.message, success: false });
                 console.log(error);
-
             })
     };
+
     return (
         <div className="header-pad">
             <div className="container py-3">
@@ -77,10 +82,10 @@ const SigninForm = () => {
                                     <Link to="/signup" className="text-decoration-none ms-2">SignUp here</Link>
                                 </p>
                             </form>
-                            {error && (<div className="alert alert-danger py-2" role="alert">
-                                Error:{error}
+                            {values.error && (<div className="alert alert-danger py-2" role="alert">
+                                Error:{values.error}
                             </div>)}
-                            {success && (role ? <Navigate to="/admin/home" /> : <Navigate to="/user/home" />)}
+                            {values.success && (values.role ? <Navigate to="/admin/home" /> : <Navigate to="/user/home" />)}
                         </div>
                     </div>
                 </div>
@@ -89,4 +94,17 @@ const SigninForm = () => {
     );
 }
 
-export default SigninForm;
+const mapStateToProps = state => {
+    return {
+        role: state.status.role
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setAdminRole: () => dispatch(setAdminRole()),
+        setUserRole: () => dispatch(setUserRole())
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SigninForm);

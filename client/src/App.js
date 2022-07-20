@@ -9,7 +9,7 @@ import Contactus from "./components/about/Contactus";
 import Terms from "./components/about/Terms-conditions";
 import Privacy from "./components/about/privacy-policy";
 import Disclaimer from "./components/about/disclaimer";
-
+import UserHome from "./components/core/UserHome";
 
 const App = () => {
   return (
@@ -19,14 +19,14 @@ const App = () => {
         <Route path="/menu" element={<Menu />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
-        <Route path="/Aboutus" element={<Aboutus />} />
-        <Route path="/Faq" element={<Faq />} />
-        <Route path="/Contactus" element={<Contactus />} />
-        <Route path="/Terms-conditions" element={<Terms/>} />
-        <Route path="/privacy-policy" element={<Privacy/>} />
-        <Route path="/disclaimer" element={<Disclaimer/>} />
-        
-        
+        <Route path="/aboutus" element={<Aboutus />} />
+        <Route path="/faq" element={<Faq />} />
+        <Route path="/contactus" element={<Contactus />} />
+        <Route path="/terms-conditions" element={<Terms />} />
+        <Route path="/privacy-policy" element={<Privacy />} />
+        <Route path="/disclaimer" element={<Disclaimer />} />
+        <Route path="/user/home" element={<UserHome />} />
+
 
       </Routes>
     </BrowserRouter>

@@ -1,8 +1,45 @@
-
+import { Fragment } from "react";
 import { Link, NavLink } from "react-router-dom";
-import logo from "../images/logo.jpeg"
+import logo from "../images/logo.jpeg";
+import { connect } from "react-redux";
 
-const Navbar = () => {
+const Navbar = ({ role }) => {
+  const displayNav = () => {
+    if (role === 1) {
+      return (
+        <Fragment>
+          <NavLink to="/admin" className="nav-link" activeclassname="nav-link-active">
+            admin
+          </NavLink>
+          <NavLink to="/logout" className="nav-link" activeclassname="nav-link-active">
+            Logout
+          </NavLink>
+        </Fragment>
+      );
+    } else if (role === 0) {
+      return (
+        <Fragment>
+          <NavLink to="/user/orders" className="nav-link" activeclassname="nav-link-active">
+            Orders
+          </NavLink>
+          <NavLink to="/logout" className="nav-link" activeclassname="nav-link-active">
+            Logout
+          </NavLink>
+        </Fragment>
+      );
+    } else if (role === -1) {
+      return (
+        <Fragment>
+          <NavLink to="/signin" className="nav-link" activeclassname="nav-link-active">
+            Log In
+          </NavLink>
+          <NavLink to="/signup" className="nav-link" activeclassname="nav-link-active">
+            Register
+          </NavLink>
+        </Fragment>
+      );
+    }
+  };
   return (
     <div className="fixed-top bg-light">
       <div className="navbar navbar-expand-lg navbar-light">
@@ -17,12 +54,7 @@ const Navbar = () => {
             <NavLink to="/menu" className="nav-link" activeclassname="nav-link-active">
               Menu
             </NavLink>
-            <NavLink to="/signin" className="nav-link" activeclassname="nav-link-active">
-              Log In
-            </NavLink>
-            <NavLink to="/signup" className="nav-link" activeclassname="nav-link-active">
-              Register
-            </NavLink>
+            {displayNav()}
           </div>
 
         </div>
@@ -30,4 +62,13 @@ const Navbar = () => {
     </div>
   )
 }
-export default Navbar
+
+const mapStateToProps = state => {
+  return {
+    role: state.status.role
+  }
+};
+
+
+
+export default connect(mapStateToProps)(Navbar);
