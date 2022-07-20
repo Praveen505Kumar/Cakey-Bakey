@@ -7,19 +7,19 @@ const Footer = () => {
         <div className='row mb-3'>
           <div className='company-info col-md-4'>
             <h2 className='text-start'>COMPANY</h2>
-            <NavLink to="/about" className="nav-link" activeclassname="nav-link-active">
+            <NavLink to="/Aboutus" className="nav-link" activeclassname="nav-link-active">
               ABOUT US
             </NavLink>
             <NavLink to="/faq" className="nav-link" activeclassname="nav-link-active">
               FAQ
             </NavLink>
-            <NavLink to="/contact" className="nav-link" activeclassname="nav-link-active">
+            <NavLink to="/Contactus" className="nav-link" activeclassname="nav-link-active">
               CONTACT US
             </NavLink>
           </div>
           <div className='legal-info col-md-4'>
             <h2 className='text-start'>LEGAL</h2>
-            <NavLink to="/terms-conditions" className="nav-link" activeclassname="nav-link-active">
+            <NavLink to="/Terms-conditions" className="nav-link" activeclassname="nav-link-active">
               TERMS &amp; CONDITIONS
             </NavLink>
             <NavLink to="/privacy-policy" className="nav-link" activeclassname="nav-link-active">
