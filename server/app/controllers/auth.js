@@ -26,7 +26,7 @@ exports.signup = (req, res) => {
                     error: "Unable to save in DB"
                 })
             }
-            return res.json({
+            return res.status(200).json({
                 name: user.name,
                 email: user.email,
                 id: user.id
@@ -38,31 +38,28 @@ exports.signup = (req, res) => {
 exports.signin = (req, res) => {
     const errors = validationResult(req);
     const { email, password } = req.body;
-
     if (!errors.isEmpty()) {
         return res.status(422).json({
-            error: errors.array()[0].msg
+            message: errors.array()[0].msg
         })
     }
-
     User.findOne({ email }, (error, user) => {
         if (error || !user) {
             return res.status(400).json({
-                error: "user email doesn't exist"
+                message: "user email doesn't exist"
             })
         }
         if (!user.authenticate(password)) {
             return res.status(401).json({
-                error: "Email and password do not match"
+                message: "Email and password do not match"
             })
         }
         // store secret cakey-secret-bakey in env variables
         const token = jwt.sign({ _id: user._id }, "cakey-secret-bakey");
 
         res.cookie("token", token, { expire: new Date() + 9999 });
-
         const { _id, name, email, role } = user;
-        res.status(200).json({ token, user: { _id, name, email, role } })
+        res.status(200).json({ user: { _id, name, email, role } });
     })
 }
 

@@ -27,13 +27,13 @@ const Menu = () => {
                                     </span>
                                     <div>
                                         <button className="item-btn">
-                                            <i class="bi bi-dash-lg"></i>
+                                            <i className="bi bi-dash-lg"></i>
                                         </button>
                                         <span>
                                             <strong>0</strong>
                                         </span>
                                         <button className="item-btn">
-                                            <i class="bi bi-plus-lg"></i>
+                                            <i className="bi bi-plus-lg"></i>
                                         </button>
                                     </div>
                                 </div>

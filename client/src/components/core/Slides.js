@@ -15,16 +15,16 @@ const Slides = () => {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <Link exact to="/menu"><img src={img1} className="d-block w-100" alt="..."></img></Link>
+            <Link to="/menu"><img src={img1} className="d-block w-100" alt="..."></img></Link>
           </div>
           <div className="carousel-item">
-            <Link exact to="/menu"><img src={img2} className="d-block w-100" alt="..."></img></Link>
+            <Link to="/menu"><img src={img2} className="d-block w-100" alt="..."></img></Link>
           </div>
           <div className="carousel-item">
-            <Link exact to="/menu"><img src={img3} className="d-block w-100" alt="..."></img></Link>
+            <Link to="/menu"><img src={img3} className="d-block w-100" alt="..."></img></Link>
           </div>
           <div className="carousel-item">
-            <Link exact to="/menu"><img src={img4} className="d-block w-100" alt="..."></img></Link>
+            <Link to="/menu"><img src={img4} className="d-block w-100" alt="..."></img></Link>
           </div>
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
