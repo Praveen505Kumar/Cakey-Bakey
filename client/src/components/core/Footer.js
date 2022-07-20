@@ -7,35 +7,35 @@ const Footer = () => {
         <div className='row mb-3'>
           <div className='company-info col-md-4'>
             <h2 className='text-start'>COMPANY</h2>
-            <NavLink exact to="/Aboutus" className="nav-link" activeClassName="nav-link-active">
+            <NavLink to="/about" className="nav-link" activeclassname="nav-link-active">
               ABOUT US
             </NavLink>
-            <NavLink exact to="/Faq" className="nav-link" activeClassName="nav-link-active">
+            <NavLink to="/faq" className="nav-link" activeclassname="nav-link-active">
               FAQ
             </NavLink>
-            <NavLink exact to="/Contactus" className="nav-link" activeClassName="nav-link-active">
+            <NavLink to="/contact" className="nav-link" activeclassname="nav-link-active">
               CONTACT US
             </NavLink>
           </div>
           <div className='legal-info col-md-4'>
             <h2 className='text-start'>LEGAL</h2>
-            <NavLink exact to="/terms-conditions" className="nav-link" activeClassName="nav-link-active">
+            <NavLink to="/terms-conditions" className="nav-link" activeclassname="nav-link-active">
               TERMS &amp; CONDITIONS
             </NavLink>
-            <NavLink exact to="/privacy-policy" className="nav-link" activeClassName="nav-link-active">
+            <NavLink to="/privacy-policy" className="nav-link" activeclassname="nav-link-active">
               PRIVACY POLICY
             </NavLink>
-            <NavLink exact to="/disclaimer" className="nav-link" activeClassName="nav-link-active">
+            <NavLink to="/disclaimer" className="nav-link" activeclassname="nav-link-active">
               DISCLAIMER
             </NavLink>
           </div>
           <div className='social-links col-md-4'>
             <h2 className='text-start'>SOCIAL MEDIA</h2>
             <div className='d-flex justify-content-around'>
-              <a href='https://www.facebook.com/' target="_blank" rel="noreferrer"><i class="bi bi-facebook" style={{ fontSize: 24 }}></i></a>
-              <a href='https://www.twitter.com/' target="_blank" rel="noreferrer"><i class="bi bi-twitter" style={{ fontSize: 24 }}></i></a>
-              <a href='https://www.instagram.com/' target="_blank" rel="noreferrer"><i class="bi bi-instagram" style={{ fontSize: 24 }}></i></a>
-              <a href='https://www.youtube.com/' target="_blank" rel="noreferrer"><i class="bi bi-youtube" style={{ fontSize: 24 }}></i></a>
+              <a href='https://www.facebook.com/' target="_blank" rel="noreferrer"><i className="bi bi-facebook" style={{ fontSize: 24 }}></i></a>
+              <a href='https://www.twitter.com/' target="_blank" rel="noreferrer"><i className="bi bi-twitter" style={{ fontSize: 24 }}></i></a>
+              <a href='https://www.instagram.com/' target="_blank" rel="noreferrer"><i className="bi bi-instagram" style={{ fontSize: 24 }}></i></a>
+              <a href='https://www.youtube.com/' target="_blank" rel="noreferrer"><i className="bi bi-youtube" style={{ fontSize: 24 }}></i></a>
             </div>
           </div>
         </div>

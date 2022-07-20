@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    address: {
+        type: String
+    },
     salt: String,
     purchases: {
         type: Array,

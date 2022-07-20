@@ -11,16 +11,16 @@ const Navbar = () => {
             <img src={logo} alt="logo" height="70" width="70" className="rounded logo" />
           </Link>
           <div className="ms-auto my-auto nav-container d-flex flex-md-row">
-            <NavLink exact to="/" className="nav-link" activeClassName="nav-link-active">
+            <NavLink to="/" className="nav-link" activeclassname="nav-link-active">
               Home
             </NavLink>
-            <NavLink exact to="/menu" className="nav-link" activeClassName="nav-link-active">
+            <NavLink to="/menu" className="nav-link" activeclassname="nav-link-active">
               Menu
             </NavLink>
-            <NavLink exact to="/signin" className="nav-link" activeClassName="nav-link-active">
+            <NavLink to="/signin" className="nav-link" activeclassname="nav-link-active">
               Log In
             </NavLink>
-            <NavLink exact to="/signup" className="nav-link" activeClassName="nav-link-active">
+            <NavLink to="/signup" className="nav-link" activeclassname="nav-link-active">
               Register
             </NavLink>
           </div>
