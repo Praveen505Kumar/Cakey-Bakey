@@ -108,6 +108,17 @@
   background-color: black;
   color: white;
 }
+.cake-card{
+  display: inline-block ;
+  padding: 0;
+  border-radius: 8px;
+  margin: 8px 32px 8px 0;
+  width: 250px;
+  overflow: hidden;
+  height: 150px;
+  
+
+}
 
 .bg-1 {
   background-color: rgb(211, 203, 203);
