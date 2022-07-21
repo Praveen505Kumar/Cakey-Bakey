@@ -41,13 +41,14 @@ const Menu = () => {
                             return (
                                 <Fragment>
                                     <div className="d-flex">
-                                        <h2 className="">Best Sellers</h2>
+                                        <h2 className="">{category.name}</h2>
                                         <div className="cat-line flex-grow-1 my-auto ms-2"></div>
                                     </div>
                                     <div className="d-flex flex-wrap">
-                                        {products && products.map(product => {
+                                        {products && products.filter(product => product.category.name === category.name).map(product => {
+
                                             return (
-                                                <div className="card cake-card me-4 my-3" style={{ width: 250 }} key={product._id}>
+                                                <div className="card cake-card me-2 my-3" style={{ width: 230}} key={product._id}>
                                                     <img src={img1} className="card-img-top" alt="..."></img>
                                                     <div className="card-body item-body rounded-3">
                                                         <h5 className="card-title">{product.name}</h5>
