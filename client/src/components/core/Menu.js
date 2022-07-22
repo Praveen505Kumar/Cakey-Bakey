@@ -1,14 +1,17 @@
 import Cart from "./Cart";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-import img1 from "../images/seller1.webp";
+
 import axios from "axios";
+
 import { Fragment, useEffect, useState } from "react";
+import Item from "./Item";
 
 
-const Menu = () => {
+const Menu = (props) => {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
+
     useEffect(() => {
         axios.get("http://localhost:8000/api/products")
             .then(response => {
@@ -46,32 +49,13 @@ const Menu = () => {
                                     </div>
                                     <div className="d-flex flex-wrap">
                                         {products && products.filter(product => product.category.name === category.name).map(product => {
-
                                             return (
-                                                <div className="card cake-card me-2 my-3" style={{ width: 230}} key={product._id}>
-                                                    <img src={img1} className="card-img-top" alt="..."></img>
-                                                    <div className="card-body item-body rounded-3">
-                                                        <h5 className="card-title">{product.name}</h5>
-                                                        <p className="card-text text-muted">{product.description}</p>
-                                                        <div className="d-flex justify-content-between align-items-center">
-                                                            <span>
-                                                                <strong>&#8377;</strong> {product.price}
-                                                            </span>
-                                                            <div>
-                                                                <button className="item-btn">
-                                                                    <i className="bi bi-dash-lg"></i>
-                                                                </button>
-                                                                <span>
-                                                                    <strong>0</strong>
-                                                                </span>
-                                                                <button className="item-btn">
-                                                                    <i className="bi bi-plus-lg"></i>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
+                                                <Item name={product.name}
+                                                    description={product.description}
+                                                    price={product.price}
+                                                    id={product._id}
+                                                    key={product._id}
+                                                />
                                             )
                                         })}
                                     </div>
@@ -88,5 +72,4 @@ const Menu = () => {
         </div>
     );
 }
-
 export default Menu;

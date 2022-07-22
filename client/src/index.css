@@ -62,10 +62,19 @@
   height: 650px;
 }
 
-.cart-position {
-  top: 110px;
-  height: 400px;
+.cartbottom {
+  width: 100%;
 }
+
+.cartbtn {
+  width: 100%
+}
+
+.cart-position {
+  top: 100px;
+  height: 450px;
+}
+
 
 
 .menu-line {
@@ -112,6 +121,16 @@
 .font {
   font-family: "Noto Sans", sans-serif;
   border: radius 15px;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 4px;
+
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 1px;
 }
 
 @media (max-width: 992px) {
