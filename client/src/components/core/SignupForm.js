@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link,Navigate } from "react-router-dom";
+import axios from "axios";
+
 
 const SignupForm = () => {
     const [values, setValues] = useState({
@@ -10,6 +12,23 @@ const SignupForm = () => {
         error: "",
         success: false
     })
+    const {name,email,address,password,error,success } = values;
+    const handleChange = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value })
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios.post('http://localhost:8000/api/signup', { email,name,address,password})
+            .then(response => {
+                setValues({ ...values, success: true, error: false });
+               
+            })
+            .catch(error => {
+                setValues({ ...values, error: error.response.data.error, success: false });
+                console.log(error);
+            })
+        };
 
 
 
@@ -30,6 +49,8 @@ const SignupForm = () => {
                                         name="name"
                                         className="form-control"
                                         placeholder="Full Name"
+                                        required
+                                        onChange={handleChange}
                                     />
                                 </div>
                                 <div className="input-group mb-3">
@@ -41,6 +62,8 @@ const SignupForm = () => {
                                         name="email"
                                         className="form-control"
                                         placeholder="Enter email"
+                                        required
+                                        onChange={handleChange}
                                     />
                                 </div>
                                 {/* <div className="input-group mb-3">
@@ -62,6 +85,8 @@ const SignupForm = () => {
                                         name="address"
                                         className="form-control"
                                         placeholder="Address"
+                                        required
+                                        onChange={handleChange}
                                     />
                                 </div>
                                 <div className="input-group mb-3">
@@ -73,10 +98,12 @@ const SignupForm = () => {
                                         name="password"
                                         className="form-control"
                                         placeholder="Enter password"
+                                        required
+                                        onChange={handleChange}
                                     />
                                 </div>
                                 <div className="d-grid">
-                                    <button type="submit" className="btn btn-primary">
+                                    <button type="submit" onClick={handleSubmit} className="btn btn-primary">
                                         Register
                                     </button>
                                 </div>
@@ -84,6 +111,10 @@ const SignupForm = () => {
                                     <Link to="/signin" className="text-decoration-none navbar-brand ms-4">Signin</Link>
                                 </p>
                             </form>
+                            {error && (<div className="alert alert-danger py-2" role="alert">
+                                Error:{error}
+                            </div>)}
+                            {success && (<Navigate to="/signin" />)}
                         </div>
                     </div>
                 </div>
