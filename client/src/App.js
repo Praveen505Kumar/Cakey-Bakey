@@ -31,7 +31,7 @@ const App = () => {
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/disclaimer" element={<Disclaimer />} />
         <Route path="/user/home" element={<UserHome />} />
-        <Route path="/admin/" element={<Dashboard />} />
+        <Route path="/admin/home" element={<Dashboard />} />
         <Route path="/userdetails" element={<Users />} />
         <Route path="/category" element={<Category />} />
         <Route path="/products" element={<Products />} />

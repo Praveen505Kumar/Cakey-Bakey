@@ -1,16 +1,19 @@
 import { NavLink } from 'react-router-dom'
-import logo from "../images/logo.jpeg";
+//import logo from "../images/logo.jpeg";
+import Navbar from "../core/Navbar";
+
 const Dashboard = () => {
     return (
         <div>
-            <div className="fixed-top bg-light">
+            <Navbar />
+            {/* <div className="fixed-top bg-light">
                 <div className="navbar navbar-expand-lg navbar-light">
                     <div className="container">
 
                         <img src={logo} alt="logo" height="70" width="70" className="rounded logo" />
 
                         <div className="ms-auto my-auto nav-container d-flex flex-md-row">
-                            <NavLink to="" className="nav-link" activeclassname="nav-link-active">
+                            <NavLink to="/logout" className="nav-link" activeclassname="nav-link-active">
                                 Logout
                             </NavLink>
 
@@ -18,9 +21,9 @@ const Dashboard = () => {
 
                     </div>
                 </div>
-            </div>
+            </div> */}
 
-            <div class="collapse d-lg-block sidebar collapse bg-black sidebar header-pad">
+            <div class="d-lg-block bg-black sidebar header-pad">
                 <ul class="list-unstyled ps-0">
 
                     <li class="mb-1">
