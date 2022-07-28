@@ -24,31 +24,23 @@ const Dashboard = () => {
             </div> */}
 
             <div class="d-lg-block bg-black sidebar header-pad">
-                <ul class="list-unstyled ps-0">
 
-                    <li class="mb-1">
-                        <button class="btn d-inline-flex align-items-center rounded collapsed admincolap" data-bs-toggle="collapse" data-bs-target="#p-collapse">
-                            Home
-                        </button>
-                        <div class="collapse" id="p-collapse">
 
-                            <NavLink to="/userdetails" className=" nav-link link" >
-                                Users
-                            </NavLink>
-                            <NavLink to="/category" className="nav-link link" activeclassname="nav-link-active">
-                                Category
-                            </NavLink>
-                            <NavLink to="/products" className="nav-link link" activeclassname="nav-link-active">
-                                Products
-                            </NavLink>
-                            <NavLink to="/orders" className="nav-link link" activeclassname="nav-link-active">
-                                Orders
-                            </NavLink>
+                <NavLink to="/userdetails" className=" nav-link link" >
+                    Users
+                </NavLink>
+                <NavLink to="/category" className="nav-link link" activeclassname="nav-link-active">
+                    Category
+                </NavLink>
+                <NavLink to="/products" className="nav-link link" activeclassname="nav-link-active">
+                    Products
+                </NavLink>
+                <NavLink to="/orders" className="nav-link link" activeclassname="nav-link-active">
+                    Orders
+                </NavLink>
 
-                        </div>
-                    </li>
 
-                </ul>
+
             </div>
         </div>
     );

@@ -81,6 +81,7 @@ exports.isSignedIn = expressjwt({
             req.headers.cookie &&
             req.headers.cookie.split("=")[0] === "token"
         ) {
+            console.log(req.headers)
             return req.headers.cookie.split("=")[1];
         }
         return null;
@@ -88,12 +89,13 @@ exports.isSignedIn = expressjwt({
 })
 
 exports.isAuthenticated = (req, res, next) => {
-    const checker = req.auth && req.profile && req.profile._id == req.auth._id;
-    if (!checker) {
-        return res.status(403).json({
-            error: "ACCESS DENIED"
-        })
-    }
+    console.log(req.auth)
+    // const checker = req.auth && req.profile && req.profile._id == req.auth._id;
+    // if (!checker) {
+    //     return res.status(403).json({
+    //         error: "ACCESS DENIED"
+    //     })
+    // }
     next();
 }
 

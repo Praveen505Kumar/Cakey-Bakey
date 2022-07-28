@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { Navigate } from "react-router-dom"
 
 const Categoryform = () => {
     const [values, setValues] = useState({
@@ -14,15 +15,17 @@ const Categoryform = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/category/create/:userId', { name })
+        const user = JSON.parse(localStorage.getItem("sample"))
+        axios.post('http://localhost:8000/api/category/create/' + user._id, { name })
             .then(response => {
                 setValues({ ...values, success: true, error: false });
-
+                console.log(response.data)
             })
             .catch(error => {
                 setValues({ ...values, error: error.response.data.error, success: false });
                 console.log(error);
             })
+
     };
 
     return (
@@ -32,12 +35,12 @@ const Categoryform = () => {
                     <label class="col-sm-4 col-form-label">Category Name:</label>
                     <div class="col-sm-8">
                         <input
-                            type="name"
+                            type="text"
                             name="name"
                             className="form-control"
                             placeholder="Add new catogory"
                             required
-                            onClick={handleChange}
+                            onChange={handleChange}
 
                         />
                     </div>
@@ -56,8 +59,14 @@ const Categoryform = () => {
                 </div> */}
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" onClick={handleSubmit} class="btn btn-success">Add</button>
+                    <button type="submit" onClick={handleSubmit}
+                        data-bs-dismiss={success ? "modal" : ""}
+                        class="btn btn-success">Add</button>
                 </div>
+                {error && (<div className="alert alert-danger py-2" role="alert">
+                    Error:{error}
+                </div>)}
+                {success && (<Navigate to="/category" />)}
             </form>
 
         </div>

@@ -1,7 +1,24 @@
 import Dashboard from "./Dashboard";
+import axios from "axios";
+import { useState, useEffect } from "react";
 import Categoryform from "./Categoryform"
 //import { NavLink } from 'react-router-dom'
 const Category = () => {
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+        axios.get('http://localhost:8000/api/categories')
+            .then((res) => {
+                setCategories(res.data);
+                console.log(res.data)
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    },
+        []
+    );
+
     return (
         <div>
             <Dashboard />
@@ -38,19 +55,22 @@ const Category = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="plain-table-row ">
-                                <td class="plain-table-cell">1</td>
-                                <td class="plain-table-cell">Eggless cakes</td>
+                            {categories.map((item, index) => (
+                                <tr class="plain-table-row ">
+                                    <td class="plain-table-cell">{index + 1}</td>
+                                    <td class="plain-table-cell">{item.name}</td>
 
-                                <td class="plain-table-cell">
-                                    <a href="/edit" class="btn btn-secondary mx-2">
-                                        Edit
-                                    </a>
-                                    <button class="btn btn-danger">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </button>
-                                </td>
-                            </tr>
+                                    <td class="plain-table-cell">
+                                        <a href="/edit" class="btn btn-secondary mx-2">
+                                            Edit
+                                        </a>
+                                        <button class="btn btn-danger">
+                                            <i class="fa fa-trash-o"></i> Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+
                         </tbody>
                     </table>
                 </div>

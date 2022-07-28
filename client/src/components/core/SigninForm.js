@@ -21,6 +21,7 @@ const SigninForm = (props) => {
         axios.post('http://localhost:8000/api/signin', { email: values.email, password: values.password })
             .then(response => {
                 setValues({ ...values, success: true, error: false, role: response.data.user.role });
+                localStorage.setItem("sample", JSON.stringify(response.data.user))
                 if (response.data.user.role === 0) {
                     props.setUserRole();
                 }

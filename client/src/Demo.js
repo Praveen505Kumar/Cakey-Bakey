@@ -6,19 +6,6 @@ import Signup from './user/Signup';
 import Home from "./components/Home";
 function App() {
 
-    // const [categories, setCategories] = useState([]);
-
-    // useEffect(() => {
-    //   api.fetchCategories()
-    //     .then((res) => {
-    //       setCategories(res.data);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err.message);
-    //     });
-    // },
-    //   []
-    // );
 
 
     return (
