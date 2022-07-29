@@ -27,7 +27,7 @@ exports.createCategory = (req, res) => {
 }
 
 exports.getCategory = (req, res) => {
-    return res.json(req.category)
+    return res.status(200).json(req.category);
 }
 
 exports.getAllCategories = (req, res) => {

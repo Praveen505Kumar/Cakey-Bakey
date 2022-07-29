@@ -39,21 +39,6 @@ app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", orderRoutes);
-// require("./app/routes/user.routes")(app);
-
-// app.post("/addcat", (req, res) => {
-//     const category = new db.Category({
-//         name: "egg cakes"
-//     });
-//     category.save()
-//         .then((result) => {
-//             res.send(result)
-//         }).catch((err) => {
-//             console.log(err);
-//         })
-// });
-
-
 
 const PORT = 8000;
 app.listen(PORT, () => {

@@ -1,10 +1,11 @@
-import { NavLink } from 'react-router-dom'
+import { Fragment } from 'react';
+import { NavLink } from 'react-router-dom';
 //import logo from "../images/logo.jpeg";
 import Navbar from "../core/Navbar";
 
 const Dashboard = () => {
     return (
-        <div>
+        <Fragment>
             <Navbar />
             {/* <div className="fixed-top bg-light">
                 <div className="navbar navbar-expand-lg navbar-light">
@@ -24,8 +25,6 @@ const Dashboard = () => {
             </div> */}
 
             <div class="d-lg-block bg-black sidebar header-pad">
-
-
                 <NavLink to="/userdetails" className=" nav-link link" >
                     Users
                 </NavLink>
@@ -38,11 +37,8 @@ const Dashboard = () => {
                 <NavLink to="/orders" className="nav-link link" activeclassname="nav-link-active">
                     Orders
                 </NavLink>
-
-
-
             </div>
-        </div>
+        </Fragment>
     );
 
 }

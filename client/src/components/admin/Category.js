@@ -1,8 +1,9 @@
-import Dashboard from "./Dashboard";
+// import Dashboard from "./Dashboard";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import Categoryform from "./Categoryform"
-//import { NavLink } from 'react-router-dom'
+import { useState, useEffect, Fragment } from "react";
+import CategoryForm from "./CategoryForm"
+import { NavLink } from 'react-router-dom';
+import Navbar from "../core/Navbar";
 const Category = () => {
     const [categories, setCategories] = useState([]);
 
@@ -20,62 +21,76 @@ const Category = () => {
     );
 
     return (
-        <div>
-            <Dashboard />
-            <div class="header-pad adminscrn">
-                <h1>Category</h1>
-
-
-                <div class="d-flex justify-content-end p-2">
-                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                        <i class="bi bi-plus"></i>
-                        Add New
-                    </button>
+        <Fragment>
+            <Navbar />
+            <div className="row header-pad">
+                <div className="col-md-2 d-lg-block bg-black  pe-3 pt-2">
+                    <NavLink to="/userdetails" className=" nav-link link" >
+                        Users
+                    </NavLink>
+                    <NavLink to="/category" className="nav-link link" activeclassname="nav-link-active">
+                        Category
+                    </NavLink>
+                    <NavLink to="/products" className="nav-link link" activeclassname="nav-link-active">
+                        Products
+                    </NavLink>
+                    <NavLink to="/orders" className="nav-link link" activeclassname="nav-link-active">
+                        Orders
+                    </NavLink>
                 </div>
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Add Category</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <Categoryform />
+                <div className="col-md-10 adminscrn ps-5">
+                    <h1>Category</h1>
+                    <div className="d-flex justify-content-end p-2">
+                        <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                            <i className="bi bi-plus"></i>
+                            Add New
+                        </button>
+                    </div>
+                    <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="staticBackdropLabel">Add Category</h5>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    <CategoryForm />
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div>
-                    <table class="table">
-                        <thead>
-                            <tr className="">
-                                <th>S.no</th>
-                                <th>Category Name</th>
-                                <th >actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {categories.map((item, index) => (
-                                <tr class="plain-table-row ">
-                                    <td class="plain-table-cell">{index + 1}</td>
-                                    <td class="plain-table-cell">{item.name}</td>
-
-                                    <td class="plain-table-cell">
-                                        <a href="/edit" class="btn btn-secondary mx-2">
-                                            Edit
-                                        </a>
-                                        <button class="btn btn-danger">
-                                            <i class="fa fa-trash-o"></i> Delete
-                                        </button>
-                                    </td>
+                    <div>
+                        <table className="table">
+                            <thead>
+                                <tr className="">
+                                    <th>S.no</th>
+                                    <th>Category Name</th>
+                                    <th >actions</th>
                                 </tr>
-                            ))}
+                            </thead>
+                            <tbody>
+                                {categories.map((item, index) => (
+                                    <tr className="plain-table-row" key={item._id}>
+                                        <td className="plain-table-cell">{index + 1}</td>
+                                        <td className="plain-table-cell">{item.name}</td>
 
-                        </tbody>
-                    </table>
+                                        <td className="plain-table-cell">
+                                            <a href="/edit" className="btn btn-secondary mx-2">
+                                                Edit
+                                            </a>
+                                            <button className="btn btn-danger">
+                                                <i className="fa fa-trash-o"></i> Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Fragment>
     );
 }
 
