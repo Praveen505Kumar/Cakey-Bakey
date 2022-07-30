@@ -19,6 +19,17 @@ exports.getUser = (req, res) => {
     return res.status(200).json(req.profile);
 }
 
+exports.getAllUsers = (req, res) => {
+    User.find().exec((error, users) => {
+        if (error) {
+            return res.status(400).json({
+                error: "No User found in DB"
+            })
+        }
+        res.status(200).json(users)
+    })
+}
+
 exports.updateUser = (req, res) => {
     User.findOneAndUpdate(
         { _id: req.profile._id },
@@ -35,6 +46,22 @@ exports.updateUser = (req, res) => {
             res.status(200).json(user);
         }
     )
+}
+
+exports.deleteUser = (req, res) => {
+    User.findOneAndRemove({ _id: req.profile._id }, { useFindAndModify: false })
+        .exec((error, deletedUser) => {
+            if (error) {
+                return res.status(400).json({
+                    error: "Not able to delete user"
+                })
+            }
+            res.status(200).json({
+                message: "Successfully deleted Category",
+                deletedUser
+            })
+        })
+
 }
 
 exports.userPurchaseList = (req, res) => {

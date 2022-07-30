@@ -1,6 +1,6 @@
 // import Dashboard from "./Dashboard";
 import axios from "axios";
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect } from "react";
 import CategoryForm from "./CategoryForm"
 import { NavLink } from 'react-router-dom';
 import Navbar from "../core/Navbar";
@@ -21,24 +21,24 @@ const Category = () => {
     );
 
     return (
-        <Fragment>
+        <div>
             <Navbar />
             <div className="row header-pad">
-                <div className="col-md-2 d-lg-block bg-black  pe-3 pt-2">
-                    <NavLink to="/userdetails" className=" nav-link link" >
+                <div className="col-md-2  bg-dark  pe-3 pt-2">
+                    <NavLink to="/userdetails" className="nav-link link" >
                         Users
                     </NavLink>
-                    <NavLink to="/category" className="nav-link link" activeclassname="nav-link-active">
+                    <NavLink to="/category" className="nav-link link" activeClassName="nav-link-active">
                         Category
                     </NavLink>
-                    <NavLink to="/products" className="nav-link link" activeclassname="nav-link-active">
+                    <NavLink to="/products" className="nav-link link" activeClassName="nav-link-active">
                         Products
                     </NavLink>
-                    <NavLink to="/orders" className="nav-link link" activeclassname="nav-link-active">
+                    <NavLink to="/orders" className="nav-link link" activeClassName="nav-link-active">
                         Orders
                     </NavLink>
                 </div>
-                <div className="col-md-10 adminscrn ps-5">
+                <div className="col-md-9 ps-5">
                     <h1>Category</h1>
                     <div className="d-flex justify-content-end p-2">
                         <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
@@ -90,7 +90,7 @@ const Category = () => {
                     </div>
                 </div>
             </div>
-        </Fragment>
+        </div>
     );
 }
 
