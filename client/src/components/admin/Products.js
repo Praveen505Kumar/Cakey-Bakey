@@ -7,34 +7,34 @@ import axios from "axios";
 
 
 const Products = (props) => {
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-      axios.get("http://localhost:8000/api/products")
-          .then(response => {
-              setProducts(response.data);
-              console.log(response.data);
-          })
-          .catch(error => {
-              console.log(error);
-          });
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/products")
+            .then(response => {
+                setProducts(response.data);
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
 
-      axios.get("http://localhost:8000/api/categories")
-          .then(response => {
-              setCategories(response.data);
-              console.log(response.data);
-          })
-          .catch(error => {
-              console.log(error);
-          })
-  }, []);
+        axios.get("http://localhost:8000/api/categories")
+            .then(response => {
+                setCategories(response.data);
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }, []);
     return (
         <div>
             <Dashboard />
             <div class="header-pad adminscrn">
-               <h1>Products</h1>
-               <div class="d-flex justify-content-end p-2">
+                <h1>Products</h1>
+                <div class="d-flex justify-content-end p-2">
                     <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                         <i class="bi bi-plus"></i>
                         Add New
@@ -53,9 +53,9 @@ const Products = (props) => {
                             </div>
                         </div>
                     </div>
-                    </div>
-           
-               {/* <div className="card cake-card me-2 my-3 shadow-sm" style={{ width: 230 }}>
+                </div>
+
+                {/* <div className="card cake-card me-2 my-3 shadow-sm" style={{ width: 230 }}>
                <div className="card-body ">
              <img className="card-img-top" src={img1} alt="no image"></img>
             <h5 className="card-title text-left">cake name</h5>
@@ -69,9 +69,9 @@ const Products = (props) => {
             
             </div>
             </div> */}
-              <div className="row mt-1">
-                    <div className="col-md-8 sample"> 
-                  
+                <div className="row mt-1">
+                    <div className="col-md-8 sample">
+
                         {categories && categories.map(category => {
                             return (
                                 <Fragment>
@@ -80,31 +80,32 @@ const Products = (props) => {
                                         <div className="cat-line flex-grow-1 my-auto ms-2"></div>
                                     </div>
                                     <div className="d-flex flex-wrap">
-                                        {products && products.filter(product => product.category.name === category.name).map(product => {
+                                        {products && products.filter(product => product.category.name === category.name).map((product, index) => {
                                             return (
                                                 <Item name={product.name}
                                                     description={product.description}
                                                     price={product.price}
                                                     id={product._id}
                                                     key={product._id}
+                                                    index={index}
                                                 />
                                             )
                                         })}
                                     </div>
-                                    </Fragment>
+                                </Fragment>
                             );
                         })}
                     </div>
-                  </div>
-                  </div>
-                  </div> 
-                
-                    
+                </div>
+            </div>
+        </div>
 
-        
-    
-        
-    
+
+
+
+
+
+
     );
 }
 
