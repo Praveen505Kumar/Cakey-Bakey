@@ -20,7 +20,7 @@ const Item = (props) => {
                     <span>
                         <strong>&#8377;</strong> {price}
                     </span>
-                    <div>
+                    {/* <div>
                         <button className="item-btn" onClick={() => props.removeItemFromCart(item)}>
                             <i className="bi bi-dash-lg"></i>
                         </button>
@@ -31,7 +31,11 @@ const Item = (props) => {
                         <button className="item-btn" onClick={() => props.addItemToCart(item)}>
                             <i className="bi bi-plus-lg"></i>
                         </button>
-                    </div>
+                    </div> */}
+             <a href="/edit" class="btn btn-primary mx-2">  Edit</a>        
+            <button class="btn btn-danger ">
+            <i class="fa fa-trash-o"></i> Delete
+            </button>
                 </div>
             </div>
         </div>
