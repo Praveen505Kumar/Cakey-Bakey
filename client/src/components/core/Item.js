@@ -1,6 +1,7 @@
 import img1 from "../images/seller1.webp";
 import { connect } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../redux/Cart/action"
+import ProductFormDelete from "../admin/ProductFormDelete";
 const Item = (props) => {
     const { name, description, id, price } = props
     const item = {
@@ -32,10 +33,24 @@ const Item = (props) => {
                             <i className="bi bi-plus-lg"></i>
                         </button>
                     </div> */}
-             <a href="/edit" class="btn btn-primary mx-2">  Edit</a>        
-            <button class="btn btn-danger ">
-            <i class="fa fa-trash-o"></i> Delete
-            </button>
+                    <a href="/edit" class="btn btn-primary mx-2">  Edit</a>
+                    {/* delete module */}
+                    <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + props.index}>
+                        <i className="fa fa-trash-o"></i> Delete
+                    </button>
+                    <div className="modal fade" id={"staticBackdrop" + props.index} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <h5 className="modal-title" id="staticBackdropLabel">Are you sure?</h5>
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    <ProductFormDelete productid={id} productname={name} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
