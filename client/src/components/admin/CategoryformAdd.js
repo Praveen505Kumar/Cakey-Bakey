@@ -19,6 +19,7 @@ const Categoryform = () => {
                 setValues({ ...values, error: false });
                 console.log(response.data);
                 window.location.reload();
+                // alert('category added!!');
             })
             .catch(error => {
                 setValues({ ...values, error: error.response.data.error });
