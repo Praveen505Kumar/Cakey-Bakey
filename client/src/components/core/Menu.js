@@ -1,4 +1,4 @@
-import Cart from "./Cart";
+//import Cart from "./Cart";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 
@@ -39,7 +39,7 @@ const Menu = (props) => {
                 <h1>MENU</h1>
                 <div className="menu-line"></div>
                 <div className="row mt-4">
-                    <div className="col-md-8 sample">
+                    <div className=" sample">
                         {categories && categories.map(category => {
                             return (
                                 <Fragment>
@@ -63,9 +63,7 @@ const Menu = (props) => {
                             );
                         })}
                     </div>
-                    <div className="col-md-4">
-                        <Cart />
-                    </div>
+
                 </div>
             </div>
             <Footer />
