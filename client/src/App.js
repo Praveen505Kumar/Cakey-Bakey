@@ -11,9 +11,9 @@ import Privacy from "./components/about/privacy-policy";
 import Disclaimer from "./components/about/disclaimer";
 import UserHome from "./components/core/UserHome";
 import Dashboard from "./components/admin/Dashboard";
-import Users from "./components/admin/Users";
-import Category from "./components/admin/Category";
-import Products from "./components/admin/Products";
+import Users from "./components/admin/Users/Users";
+import Category from "./components/admin/Category/Category";
+import Products from "./components/admin/Products/Products";
 import Orders from "./components/admin/Orders";
 
 const App = () => {

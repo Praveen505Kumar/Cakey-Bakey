@@ -1,7 +1,8 @@
 import img1 from "../images/seller1.webp";
 import { connect } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../redux/Cart/action"
-import ProductFormDelete from "../admin/ProductFormDelete";
+import ProductFormDelete from "../admin/Products/ProductFormDelete";
+import ProductFormEdit from "../admin/Products/ProductFormEdit";
 const Item = (props) => {
     const { name, description, id, price } = props
     const item = {
@@ -33,8 +34,23 @@ const Item = (props) => {
                             <i className="bi bi-plus-lg"></i>
                         </button>
                     </div> */}
-                    <a href="/edit" class="btn btn-primary mx-2">  Edit</a>
-                    {/* delete module */}
+                    {/* edit modal */}
+                    <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target={"#staticBackdropEdit" + props.index}>
+                        <i className="fa fa-trash-o"></i> Edit
+                    </button>
+                    <div className="modal fade" id={"staticBackdropEdit" + props.index} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal-dialog modal-dialog-centered">
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div className="modal-body">
+                                    <ProductFormEdit productid={id} productname={name} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* delete modal */}
                     <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + props.index}>
                         <i className="fa fa-trash-o"></i> Delete
                     </button>

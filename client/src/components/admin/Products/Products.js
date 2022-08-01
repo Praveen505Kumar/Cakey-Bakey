@@ -1,9 +1,8 @@
-import Dashboard from "./Dashboard";
-import img1 from '../images/seller1.webp';
-import Productform from "./Productform"
+import Dashboard from "../Dashboard";
 import { Fragment, useEffect, useState } from "react";
-import Item from "../core/Item"
+import Item from "../../core/Item"
 import axios from "axios";
+import ProductFormAdd from "./ProductFormAdd";
 
 
 const Products = (props) => {
@@ -49,7 +48,7 @@ const Products = (props) => {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <Productform />
+                                <ProductFormAdd />
                             </div>
                         </div>
                     </div>
