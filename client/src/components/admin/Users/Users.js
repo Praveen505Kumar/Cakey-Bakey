@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 //import { NavLink } from 'react-router-dom';
 // import UserFormAdd from './UserFormAdd';
 import UserFormDelete from './UserFormDelete';
-<<<<<<< HEAD:client/src/components/admin/Users/Users.js
-import Navbar from "../../core/Navbar";
-=======
-import Dashboard from "./Dashboard";
->>>>>>> db5f742d18e3ceb2b3ea3f98c7853b800761e88c:client/src/components/admin/Users.js
+import UserformEdit from "./UserformEdit";
+
+//import Navbar from "../../core/Navbar";
+
+import Dashboard from "../Dashboard";
+
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -67,9 +68,24 @@ const Users = () => {
                                         <td className="plain-table-cell">{user.name}</td>
                                         <td className="plain-table-cell">{user.email}</td>
                                         <td className="plain-table-cell">
-                                            <a href="/edit" className="btn btn-secondary mx-2">
+                                            {/* edit module */}
+                                            <a className="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target={"#staticBackdropedit" + index}>
                                                 Edit
                                             </a>
+                                            <div className="modal fade" id={"staticBackdropedit" + index} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                <div className="modal-dialog modal-dialog-centered">
+                                                    <div className="modal-content">
+                                                        <div className="modal-header">
+                                                            <h5 className="modal-title" id="staticBackdropLabel">Update User</h5>
+                                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div className="modal-body">
+                                                            <UserformEdit />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                             <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + index}>
                                                 <i className="fa fa-trash-o"></i> Delete
                                             </button>

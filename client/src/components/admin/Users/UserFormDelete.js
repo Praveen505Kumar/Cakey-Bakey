@@ -21,7 +21,7 @@ const UserFormDelete = ({ userid, username }) => {
         <div>
             <form>
                 <div className="row mb-3">
-                    <p>Delete {username}</p>
+                    <p>Delete "{username}"</p>
                 </div>
                 <div className="modal-footer">
                     <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>

@@ -64,11 +64,11 @@ const Category = () => {
                                         <td className="plain-table-cell">
                                             {/* edit module */}
 
-                                            <button className="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target={"#staticBackdropedit"}>
+                                            <button className="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target={"#staticBackdropedit" + index}>
                                                 Edit
                                             </button>
 
-                                            <div className="modal fade" id="staticBackdropedit" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div className="modal fade" id={"staticBackdropedit" + index} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                 <div className="modal-dialog modal-dialog-centered">
                                                     <div className="modal-content">
                                                         <div className="modal-header">
