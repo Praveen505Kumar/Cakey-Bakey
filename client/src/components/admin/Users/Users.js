@@ -1,9 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { NavLink } from 'react-router-dom';
+//import { NavLink } from 'react-router-dom';
 // import UserFormAdd from './UserFormAdd';
 import UserFormDelete from './UserFormDelete';
+<<<<<<< HEAD:client/src/components/admin/Users/Users.js
 import Navbar from "../../core/Navbar";
+=======
+import Dashboard from "./Dashboard";
+>>>>>>> db5f742d18e3ceb2b3ea3f98c7853b800761e88c:client/src/components/admin/Users.js
 
 const Users = () => {
     const [users, setUsers] = useState([]);
@@ -22,23 +26,10 @@ const Users = () => {
     );
     return (
         <div>
-            <Navbar />
-            <div className="row header-pad">
-                <div className="col-md-2  bg-dark  pe-3 pt-2">
-                    <NavLink to="/userdetails" className="nav-link link" >
-                        Users
-                    </NavLink>
-                    <NavLink to="/category" className="nav-link link" activeClassName="nav-link-active">
-                        Category
-                    </NavLink>
-                    <NavLink to="/products" className="nav-link link" activeClassName="nav-link-active">
-                        Products
-                    </NavLink>
-                    <NavLink to="/orders" className="nav-link link" activeClassName="nav-link-active">
-                        Orders
-                    </NavLink>
-                </div>
-                <div className="col-md-9 ps-5">
+
+            <div className="header-pad">
+                <Dashboard />
+                <div className="col-md-11 adminscrn">
                     <h1>Users</h1>
                     {/* <div className="d-flex justify-content-end p-2">
                         <button type="button" className="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">

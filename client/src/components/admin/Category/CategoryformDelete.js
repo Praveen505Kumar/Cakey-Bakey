@@ -10,6 +10,7 @@ const CategoryformDelete = ({ categoryid, categoryname }) => {
         axios.delete('http://localhost:8000/api/category/' + categoryid + '/' + user._id)
             .then(response => {
                 console.log(response.data);
+                // alert('category deleted!!');
                 window.location.reload();
             })
             .catch(error => {
@@ -25,7 +26,7 @@ const CategoryformDelete = ({ categoryid, categoryname }) => {
                     <p>Delete "{categoryname}"</p>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondory" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" className="btn btn-danger" onClick={handleSubmit}>Delete</button>
                 </div>
                 {error && (<div className="alert alert-danger py-2" role="alert">
