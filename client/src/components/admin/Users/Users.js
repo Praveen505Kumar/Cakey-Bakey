@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 //import { NavLink } from 'react-router-dom';
 // import UserFormAdd from './UserFormAdd';
 import UserFormDelete from './UserFormDelete';
-import UserformEdit from "./UserformEdit";
+// import UserformEdit from "./UserformEdit";
 
 //import Navbar from "../../core/Navbar";
 
@@ -68,7 +68,7 @@ const Users = () => {
                                         <td className="plain-table-cell">{user.name}</td>
                                         <td className="plain-table-cell">{user.email}</td>
                                         <td className="plain-table-cell">
-                                            {/* edit module */}
+                                            {/* edit module
                                             <a className="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target={"#staticBackdropedit" + index}>
                                                 Edit
                                             </a>
@@ -84,7 +84,7 @@ const Users = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                </div>*/}
 
                                             <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + index}>
                                                 <i className="fa fa-trash-o"></i> Delete

@@ -4,8 +4,11 @@ import logo from "../images/logo.jpeg";
 import { connect } from "react-redux";
 
 const Navbar = () => {
-  const user = JSON.parse(localStorage.getItem("sample"))
-  const role = user.role
+  let role = -1
+  if (localStorage.getItem("sample") !== null) {
+    const user = JSON.parse(localStorage.getItem("sample"))
+    role = user.role
+  }
   const displayNav = () => {
 
     if (role === 1) {

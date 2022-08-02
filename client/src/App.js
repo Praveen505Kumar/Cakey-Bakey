@@ -15,6 +15,7 @@ import Users from "./components/admin/Users/Users";
 import Category from "./components/admin/Category/Category";
 import Products from "./components/admin/Products/Products";
 import Orders from "./components/admin/Orders";
+import Logout from "./components/core/Logout";
 
 const App = () => {
   return (
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/category" element={<Category />} />
         <Route path="/products" element={<Products />} />
         <Route path="/orders" element={<Orders />} />
+        <Route path="/logout" element={<Logout />} />
 
 
       </Routes>
