@@ -60,10 +60,15 @@ const Category = () => {
                                     <tr className="plain-table-row" key={category._id}>
                                         <td className="plain-table-cell">{index + 1}</td>
                                         <td className="plain-table-cell">{category.name}</td>
-
                                         <td className="plain-table-cell">
-                                            {/* edit module */}
+                                            <div class="form-check form-switch">
+                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
 
+                                            </div>
+                                        </td>
+
+                                        {/* <td className="plain-table-cell">
+                                            
                                             <button className="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target={"#staticBackdropedit" + index}>
                                                 Edit
                                             </button>
@@ -82,7 +87,7 @@ const Category = () => {
                                                 </div>
                                             </div>
 
-                                            {/* delete module */}
+                                            
                                             <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + index}>
                                                 <i className="fa fa-trash-o"></i> Delete
                                             </button>
@@ -100,7 +105,7 @@ const Category = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </td>
+                                        </td> */}
                                     </tr>
                                 ))}
 
