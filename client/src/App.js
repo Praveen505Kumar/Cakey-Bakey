@@ -17,6 +17,7 @@ import Products from "./components/admin/Products/Products";
 import Orders from "./components/admin/Orders";
 import Logout from "./components/core/Logout";
 import Cartpage from "./components/core/Cartpage";
+import Checkout from "./components/core/Checkout";
 
 
 const App = () => {
@@ -41,6 +42,8 @@ const App = () => {
         <Route path="/orders" element={<Orders />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/cart" element={<Cartpage />} />
+        <Route path="/checkout" element={<Checkout />} />
+
 
 
 
