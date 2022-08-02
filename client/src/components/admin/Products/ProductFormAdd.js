@@ -12,17 +12,19 @@ const ProductFormAdd = () => {
         error: "",
         success: false
     })
-    const { name, description, price, photo, error, success } = values;
+    const { name, description, price, category, photo, error, success } = values;
     const handleChange = (e) => {
+
         setValues({ ...values, [e.target.name]: e.target.value })
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/product/create/:userId', { description, name, price, photo })
+        const user = JSON.parse(localStorage.getItem("sample"))
+        axios.post('http://localhost:8000/api/product/create/' + user._id, { description, name, price, photo, category })
             .then(response => {
                 setValues({ ...values, success: true, error: false });
-
+                console.log(response);
             })
             .catch(error => {
                 setValues({ ...values, error: error.response.data.error, success: false });

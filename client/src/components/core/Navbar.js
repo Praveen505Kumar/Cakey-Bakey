@@ -3,8 +3,11 @@ import { Link, NavLink } from "react-router-dom";
 import logo from "../images/logo.jpeg";
 import { connect } from "react-redux";
 
-const Navbar = ({ role }) => {
+const Navbar = () => {
+  const user = JSON.parse(localStorage.getItem("sample"))
+  const role = user.role
   const displayNav = () => {
+
     if (role === 1) {
       return (
         <Fragment>
