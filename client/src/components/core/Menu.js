@@ -36,7 +36,14 @@ const Menu = (props) => {
         <div>
             <Navbar />
             <div className="container header-pad">
-                <h1>MENU</h1>
+                {/* <h1>MENU</h1> */}
+                <div class="d-flex justify-content-between align-items-center">
+                    <h1>MENU</h1>
+                    <div class="col-xs-6">
+                        <a href="/cart" class="btn btn-primary btn-block" >
+                            <span className='bi bi-cart-fill' ></span>Cart</a>
+                    </div>
+                </div>
                 <div className="menu-line"></div>
                 <div className="row mt-4">
                     <div className=" sample">
