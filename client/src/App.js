@@ -16,7 +16,7 @@ import Category from "./components/admin/Category/Category";
 import Products from "./components/admin/Products/Products";
 import Orders from "./components/admin/Orders";
 import Logout from "./components/core/Logout";
-import Checkout from "./components/core/Checkout";
+
 
 const App = () => {
   return (
