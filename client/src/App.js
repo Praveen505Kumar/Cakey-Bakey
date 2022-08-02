@@ -18,7 +18,7 @@ import Orders from "./components/admin/Orders";
 import Logout from "./components/core/Logout";
 import Cartpage from "./components/core/Cartpage";
 import Checkout from "./components/core/Checkout";
-
+import Profile from "./components/core/Profile"
 
 const App = () => {
   return (
@@ -43,6 +43,7 @@ const App = () => {
         <Route path="/logout" element={<Logout />} />
         <Route path="/cart" element={<Cartpage />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/user/profile" element={<Profile />} />
 
 
 

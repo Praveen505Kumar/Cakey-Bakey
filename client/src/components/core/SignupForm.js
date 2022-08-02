@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link,Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import axios from "axios";
 
 
@@ -12,23 +12,23 @@ const SignupForm = () => {
         error: "",
         success: false
     })
-    const {name,email,address,password,error,success } = values;
+    const { name, email, address, password, error, success } = values;
     const handleChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value })
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/signup', { email,name,address,password})
+        axios.post('http://localhost:8000/api/signup', { email, name, address, password })
             .then(response => {
                 setValues({ ...values, success: true, error: false });
-               
+
             })
             .catch(error => {
                 setValues({ ...values, error: error.response.data.error, success: false });
                 console.log(error);
             })
-        };
+    };
 
 
 
