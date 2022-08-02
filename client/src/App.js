@@ -16,6 +16,7 @@ import Category from "./components/admin/Category/Category";
 import Products from "./components/admin/Products/Products";
 import Orders from "./components/admin/Orders";
 import Logout from "./components/core/Logout";
+import Cartpage from "./components/core/Cartpage";
 
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
         <Route path="/products" element={<Products />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/cart" element={<Cartpage />} />
 
 
 

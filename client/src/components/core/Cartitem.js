@@ -22,13 +22,16 @@ const Cartitem = (props) => {
                         <i className="bi bi-dash-lg"></i>
                     </button>
                     <span>
-                        <strong> {id in props.itemMap ?
-                            props.cart[props.itemMap[id]].quantity : 0} </strong>
+                        <strong>Qty: {id in props.itemMap ?
+                            props.cart[props.itemMap[id]].quantity : 0} kg</strong>
                     </span>
                     <button className="item-btn" onClick={() => props.addItemToCart(item)}>
                         <i className="bi bi-plus-lg"></i>
                     </button>
                 </div>
+                {/* <div>
+                    <button className="btn btn-warning" onClick={() => props.removeItemFromCart(item)}>Remove</button>
+                </div> */}
             </div>
             <hr />
 
