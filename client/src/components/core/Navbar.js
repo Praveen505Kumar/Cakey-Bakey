@@ -28,8 +28,9 @@ const Navbar = () => {
           <NavLink to="/menu" className="nav-link" activeclassname="nav-link-active">
             Menu
           </NavLink>
-          <NavLink to="/user/orders" className="nav-link" activeclassname="nav-link-active">
-            Orders
+
+          <NavLink to="/user/profile" className="nav-link" activeclassname="nav-link-active">
+            Profile
           </NavLink>
           <NavLink to="/logout" className="nav-link" activeclassname="nav-link-active">
             Logout

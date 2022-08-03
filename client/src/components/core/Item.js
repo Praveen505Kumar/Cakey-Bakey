@@ -87,7 +87,10 @@ const Item = (props) => {
 
                     </Fragment>) : (
                         <div>
-                            <Link to={role === -1 ? ("/signin") : ("/cart")}> <button className="btn btn-secondary">Add To Cart</button>
+                            <Link to="/cart">
+                                <button className="btn btn-secondary" onClick={() => props.addItemToCart(item)}>
+
+                                    Add To Cart</button>
                             </Link>
                         </div>
                     )}

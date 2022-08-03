@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Navigate } from 'react-router'
+
 
 const Logout = () => {
     useEffect(() => {
@@ -7,10 +8,7 @@ const Logout = () => {
     }
     )
     return (
-        <div>
-            <h1>logout successfully</h1>
-            <Link to="/">Go To Home</Link>
-        </div>
+        <Navigate to="/" />
     )
 }
 export default Logout;
