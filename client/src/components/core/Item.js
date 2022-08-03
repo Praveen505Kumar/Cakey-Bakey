@@ -3,25 +3,46 @@ import { connect } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../redux/Cart/action"
 import ProductFormDelete from "../admin/Products/ProductFormDelete";
 import ProductFormEdit from "../admin/Products/ProductFormEdit";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 const Item = (props) => {
     let role = -1
     if (localStorage.getItem("sample") !== null) {
         const user = JSON.parse(localStorage.getItem("sample"))
         role = user.role
     }
-    const { name, description, id, price } = props
-    const item = {
-        id: id,
-        name: name,
-        price: price,
-        description: description,
-
-    }
+    const { name, description, id, price } = props;
+    // var binary = '';
+    // var bytes = [].slice.call(new Uint8Array(arrayBuffer));
+    // bytes.forEach((b) => binary += String.fromCharCode(b));
+    // const base64String = window.btoa(binary);
+    // const base64String = window.btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+    // if (!arrayBuffer) {
+    //     const base64String = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
+    //     img1 = base64String; `data:image/png;base64,${base64String}`
+    // }
+    // const item = {
+    //     id: id,
+    //     name: name,
+    //     price: price,
+    //     description: description
+    // }
+    // const [photo, setPhoto] = useState("");
+    // const [error, setError] = useState("");
+    // useEffect(() => {
+    //     axios.get("http://localhost:8000/api/product/photo/" + id)
+    //         .then(response => {
+    //             console.log(response.data);
+    //         })
+    //         .catch(err => {
+    //             setError(err.response.data)
+    //             console.log(error);
+    //         })
+    // }, [])
     return (
         <div className="card cake-card me-2 my-3 shadow-sm" style={{ width: 230 }}>
-            <img src={img1} className="card-img-top" alt="..."></img>
+            <img src={"http://localhost:8000/api/product/photo/" + id} className="card-img-top" alt="..."></img>
             <div className="card-body item-body rounded-3">
                 <h5 className="card-title">{name}</h5>
                 <p className="card-text text-muted">{description}</p>
@@ -31,10 +52,10 @@ const Item = (props) => {
                     </span>
 
                     {role === 1 ? (<Fragment>{/* edit modal */}
-                        <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target={"#staticBackdropEdit" + props.index}>
+                        <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target={"#staticBackdropEdit" + id}>
                             <i className="fa fa-trash-o"></i> Edit
                         </button>
-                        <div className="modal fade" id={"staticBackdropEdit" + props.index} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal fade" id={"staticBackdropEdit" + id} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div className="modal-dialog modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">
@@ -47,10 +68,10 @@ const Item = (props) => {
                             </div>
                         </div>
                         {/* delete modal */}
-                        <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + props.index}>
+                        <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + id}>
                             <i className="fa fa-trash-o"></i> Delete
                         </button>
-                        <div className="modal fade" id={"staticBackdrop" + props.index} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal fade" id={"staticBackdrop" + id} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div className="modal-dialog modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">

@@ -55,6 +55,7 @@ const Menu = (props) => {
                                                     price={product.price}
                                                     id={product._id}
                                                     key={product._id}
+                                                    arrayBuffer={product.photo.data.data}
                                                 />
                                             )
                                         })}

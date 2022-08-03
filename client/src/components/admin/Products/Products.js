@@ -13,7 +13,7 @@ const Products = (props) => {
         axios.get("http://localhost:8000/api/products")
             .then(response => {
                 setProducts(response.data);
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(error => {
                 console.log(error);
@@ -22,7 +22,7 @@ const Products = (props) => {
         axios.get("http://localhost:8000/api/categories")
             .then(response => {
                 setCategories(response.data);
-                console.log(response.data);
+                //console.log(response.data);
             })
             .catch(error => {
                 console.log(error);
@@ -44,7 +44,7 @@ const Products = (props) => {
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="staticBackdropLabel">Add Products</h5>
+                                <h5 class="modal-title" id="staticBackdropLabel">Add Product</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
