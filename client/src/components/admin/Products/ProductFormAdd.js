@@ -35,7 +35,7 @@ const ProductFormAdd = () => {
         }).then(response => {
             setValues({ ...values, success: true, error: false });
             console.log(response);
-            // window.location.reload();
+            window.location.reload();
         }).catch(error => {
             setValues({ ...values, error: error.response.data.error, success: false });
             console.log(error);
@@ -49,7 +49,8 @@ const ProductFormAdd = () => {
         axios.get('http://localhost:8000/api/categories')
             .then((res) => {
                 setCategories(res.data);
-                console.log(res.data)
+                console.log(res.data);
+
             })
             .catch((err) => {
                 console.log(err.message);

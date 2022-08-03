@@ -22,12 +22,12 @@ const Item = (props) => {
     //     const base64String = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
     //     img1 = base64String; `data:image/png;base64,${base64String}`
     // }
-    // const item = {
-    //     id: id,
-    //     name: name,
-    //     price: price,
-    //     description: description
-    // }
+    const item = {
+        id: id,
+        name: name,
+        price: price,
+        description: description
+    }
     // const [photo, setPhoto] = useState("");
     // const [error, setError] = useState("");
     // useEffect(() => {

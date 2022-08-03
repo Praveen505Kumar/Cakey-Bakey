@@ -1,7 +1,7 @@
 //import Cart from "./Cart";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
-
+import { Link } from 'react-router-dom'
 import axios from "axios";
 
 import { Fragment, useEffect, useState } from "react";
@@ -40,8 +40,8 @@ const Menu = (props) => {
                 <div class="d-flex justify-content-between align-items-center">
                     <h1>MENU</h1>
                     <div class="col-xs-6">
-                        <a href="/cart" class="btn btn-primary btn-block" >
-                            <span className='bi bi-cart-fill' ></span>Cart</a>
+                        <Link to="/cart" class="btn btn-primary btn-block" >
+                            <span className='bi bi-cart-fill' ></span>Cart</Link>
                     </div>
                 </div>
                 <div className="menu-line"></div>
@@ -62,7 +62,7 @@ const Menu = (props) => {
                                                     price={product.price}
                                                     id={product._id}
                                                     key={product._id}
-                                                    arrayBuffer={product.photo.data.data}
+                                                // arrayBuffer={product.photo.data.data}
                                                 />
                                             )
                                         })}
