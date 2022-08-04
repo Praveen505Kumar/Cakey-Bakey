@@ -14,12 +14,12 @@ const CheckoutForm = () => {
     const { flatno, streetname, city, pincode, user, state, error, success } = values;
     const handleChange = (e) => {
 
-        setValues({ ...values, [e.target.flotno]: e.target.value })
+        setValues({ ...values, [e.target.flatno]: e.target.value })
     };
     const handleSubmit = (e) => {
         e.preventDefault();
         const user = JSON.parse(localStorage.getItem("sample"))
-        axios.post('http://localhost:8000/api/address/create' + user._id, { flatno, streetname, city, pincode, user, state })
+        axios.post('http://localhost:8000/api/address/create/' + user._id, { flatno, streetname, city, pincode, user, state })
             .then(response => {
                 setValues({ ...values, error: false });
                 console.log(response.data);
@@ -32,20 +32,20 @@ const CheckoutForm = () => {
             })
 
     };
-    const [address, setAddress] = useState([]);
+    // const [address, setAddress] = useState([]);
 
-    useEffect(() => {
-        axios.get('http://localhost:8000/api/address/:userId')
-            .then((res) => {
-                setAddress(res.data);
-                console.log(res.data)
-            })
-            .catch((err) => {
-                console.log(err.message);
-            });
-    },
-        []
-    );
+    // useEffect(() => {
+    //     axios.get('http://localhost:8000/api/address/:userId')
+    //         .then((res) => {
+    //             setAddress(res.data);
+    //             console.log(res.data)
+    //         })
+    //         .catch((err) => {
+    //             console.log(err.message);
+    //         });
+    // },
+    //     []
+    // );
 
     const states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", " Goa", " Gujarat", " Haryana", "Himachal Pradesh"
         , "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", " Madhya Pradesh", "Maharashtra", "Manipu", "Meghalaya", "Mizoram", "Nagaland"

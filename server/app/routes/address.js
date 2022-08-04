@@ -7,6 +7,6 @@ const { isSignedIn, isAuthenticated } = require("../controllers/auth")
 
 router.param("userId", getUserById);
 
-router.post("/address/:userId", isSignedIn, isAuthenticated, createAddress);
+router.post("/address/create/:userId", isSignedIn, isAuthenticated, createAddress);
 
 module.exports = router;
