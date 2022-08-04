@@ -4,21 +4,20 @@ const Contactus = () => {
 
     return (
         <div>
-             <div>
+            <div>
                 <Navbar />
                 <div className="container header-pad">
-                <h1 className="head text-center">CONTACT US</h1>
-                <p  className="font">
-                
-                 </p>  
+                    <h1 className="head text-center bg5">CONTACT US</h1>
+
+
                 </div>
             </div>
-        <Footer />
-       </div> 
-    
+            <Footer />
+        </div>
 
-    
-        
+
+
+
     );
 }
 
