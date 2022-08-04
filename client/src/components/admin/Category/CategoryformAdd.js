@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-const Categoryform = () => {
+const CategoryFormAdd = () => {
     const [values, setValues] = useState({
         name: "",
         error: ""
@@ -70,4 +70,4 @@ const Categoryform = () => {
     );
 }
 
-export default Categoryform;
+export default CategoryFormAdd;

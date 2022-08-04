@@ -27,8 +27,6 @@ exports.createProduct = (req, res) => {
                 error: "problem with the image"
             });
         }
-        console.log(fields);
-        console.log(file);
         const { name, description, price, category } = fields;
         if (!name || !description || !price || !category) {
             return res.status(400).json({
@@ -79,7 +77,7 @@ exports.updateProduct = (req, res) => {
                     error: "Photo size is too big, it must be less than 3MB"
                 })
             }
-            product.photo.data = fileSystem.readFileSync(file.photo.path);
+            product.photo.data = fileSystem.readFileSync(file.photo.filepath);
             product.photo.contentType = file.photo.type;
         }
 

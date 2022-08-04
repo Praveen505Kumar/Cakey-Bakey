@@ -1,11 +1,9 @@
-import img1 from "../images/seller1.webp";
 import { connect } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../redux/Cart/action"
 import ProductFormDelete from "../admin/Products/ProductFormDelete";
 import ProductFormEdit from "../admin/Products/ProductFormEdit";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 const Item = (props) => {
     let role = -1
     if (localStorage.getItem("sample") !== null) {
@@ -13,45 +11,25 @@ const Item = (props) => {
         role = user.role
     }
     const { name, description, id, price } = props;
-    // var binary = '';
-    // var bytes = [].slice.call(new Uint8Array(arrayBuffer));
-    // bytes.forEach((b) => binary += String.fromCharCode(b));
-    // const base64String = window.btoa(binary);
-    // const base64String = window.btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
-    // if (!arrayBuffer) {
-    //     const base64String = btoa(String.fromCharCode(...new Uint8Array(arrayBuffer)));
-    //     img1 = base64String; `data:image/png;base64,${base64String}`
-    // }
-    // const item = {
-    //     id: id,
-    //     name: name,
-    //     price: price,
-    //     description: description
-    // }
-    // const [photo, setPhoto] = useState("");
-    // const [error, setError] = useState("");
-    // useEffect(() => {
-    //     axios.get("http://localhost:8000/api/product/photo/" + id)
-    //         .then(response => {
-    //             console.log(response.data);
-    //         })
-    //         .catch(err => {
-    //             setError(err.response.data)
-    //             console.log(error);
-    //         })
-    // }, [])
+    const item = {
+        id: id,
+        name: name,
+        price: price,
+        description: description
+    }
     return (
         <div className="card cake-card me-2 my-3 shadow-sm" style={{ width: 230 }}>
             <img src={"http://localhost:8000/api/product/photo/" + id} className="card-img-top" alt="..."></img>
             <div className="card-body item-body rounded-3">
-                <h5 className="card-title">{name}</h5>
-                <p className="card-text text-muted">{description}</p>
+                <h5 className="card-title">{name.length > 20 ? (name.substr(0, 20) + "...") : (name)}</h5>
+                <p className="card-text text-muted">{description.length > 50 ? (description.substr(0, 50) + "...") : (description)}</p>
                 <div className="d-flex justify-content-between align-items-center">
                     <span>
                         <strong>&#8377;</strong> {price}
                     </span>
 
-                    {role === 1 ? (<Fragment>{/* edit modal */}
+                    {role === 1 ? (<Fragment>
+                        {/* edit modal */}
                         <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target={"#staticBackdropEdit" + id}>
                             <i className="fa fa-trash-o"></i> Edit
                         </button>
@@ -59,10 +37,13 @@ const Item = (props) => {
                             <div className="modal-dialog modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Edit Product</h5>
                                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">
-                                        <ProductFormEdit productid={id} productname={name} />
+                                        <ProductFormEdit
+                                            id={id}
+                                        />
                                     </div>
                                 </div>
                             </div>
