@@ -27,9 +27,8 @@ exports.createProduct = (req, res) => {
                 error: "problem with the image"
             });
         }
-
-        const { name, description, price, category, stock } = fields;
-        if (!name || !description || !price || !category || !stock) {
+        const { name, description, price, category } = fields;
+        if (!name || !description || !price || !category) {
             return res.status(400).json({
                 error: "Please include all fields"
             })
@@ -42,7 +41,7 @@ exports.createProduct = (req, res) => {
                     error: "Photo size is too big, it must be less than 3MB"
                 })
             }
-            product.photo.data = fileSystem.readFileSync(file.photo.path);
+            product.photo.data = fileSystem.readFileSync(file.photo.filepath);
             product.photo.contentType = file.photo.type;
         }
 
@@ -78,7 +77,7 @@ exports.updateProduct = (req, res) => {
                     error: "Photo size is too big, it must be less than 3MB"
                 })
             }
-            product.photo.data = fileSystem.readFileSync(file.photo.path);
+            product.photo.data = fileSystem.readFileSync(file.photo.filepath);
             product.photo.contentType = file.photo.type;
         }
 
@@ -113,12 +112,17 @@ exports.getProduct = (req, res) => {
     res.status(200).json(req.product);
 }
 
-exports.getProductImage = (req, res, next) => {
+exports.getProductImage = (req, res) => {
     if (req.product.photo.data) {
         res.set("Content-Type", req.product.photo.contentType);
         return res.send(req.product.photo.data)
     }
-    next();
+
+    fileSystem.readFile("../server/app/assets/No Image.jpg", (err, data) => {
+        if (err) throw err;
+        res.set("Content-type", "image/jpg");
+        return res.status(200).send(data);
+    })
 }
 
 exports.getAllProducts = (req, res) => {
@@ -133,6 +137,7 @@ exports.getAllProducts = (req, res) => {
                     error: "NO products found"
                 });
             }
+            res.set("Content-Type", "multipart/form-data");
             return res.status(200).json(products);
         });
 }

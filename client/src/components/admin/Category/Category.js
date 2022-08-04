@@ -1,7 +1,7 @@
 import Dashboard from "../Dashboard";
 import axios from "axios";
 import { useState, useEffect, Fragment } from "react";
-import Categoryform from "./CategoryformAdd"
+import CategoryFormAdd from "./CategoryformAdd"
 import CategoryformDelete from "./CategoryformDelete";
 import CategoryformEdit from "./CategoryformEdit";
 const Category = () => {
@@ -41,7 +41,7 @@ const Category = () => {
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body">
-                                    <Categoryform />
+                                    <CategoryFormAdd />
                                 </div>
                             </div>
                         </div>

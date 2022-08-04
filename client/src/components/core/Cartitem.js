@@ -10,7 +10,7 @@ const Cartitem = (props) => {
 
     }
     return (
-        <div class="col-xs-4 px-2">
+        <div className="col-xs-4 px-2">
             <h5 className="card-title">{name}</h5>
             <p className="card-text text-muted"><small>{description}</small></p>
             <div className="d-flex justify-content-between align-items-center">

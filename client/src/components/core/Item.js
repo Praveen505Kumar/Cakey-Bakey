@@ -1,4 +1,3 @@
-import img1 from "../images/seller1.webp";
 import { connect } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../redux/Cart/action"
 import ProductFormDelete from "../admin/Products/ProductFormDelete";
@@ -11,46 +10,55 @@ const Item = (props) => {
         const user = JSON.parse(localStorage.getItem("sample"))
         role = user.role
     }
-    const { name, description, id, price } = props
+    const { name, description, id, price } = props;
     const item = {
         id: id,
         name: name,
         price: price,
-        description: description,
-
+        description: description
     }
     return (
-        <div className="card cake-card me-2 my-3 shadow-sm" style={{ width: 230 }}>
-            <img src={img1} className="card-img-top" alt="..."></img>
+        <div className="card cake-card me-2 my-3 shadow-sm" style={{ width: 250 }}>
+            <div>
+                <img src={"http://localhost:8000/api/product/photo/" + id}
+                    className="card-img-top"
+                    style={{ width: 250, height: 180 }}
+                    alt="..."
+                ></img>
+            </div>
             <div className="card-body item-body rounded-3">
-                <h5 className="card-title">{name}</h5>
-                <p className="card-text text-muted">{description}</p>
+                <h5 className="card-title">{name.length > 20 ? (name.substr(0, 20) + "...") : (name)}</h5>
+                <p className="card-text text-muted">{description.length > 50 ? (description.substr(0, 50) + "...") : (description)}</p>
                 <div className="d-flex justify-content-between align-items-center">
                     <span>
                         <strong>&#8377;</strong> {price}
                     </span>
 
-                    {role === 1 ? (<Fragment>{/* edit modal */}
-                        <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target={"#staticBackdropEdit" + props.index}>
+                    {role === 1 ? (<Fragment>
+                        {/* edit modal */}
+                        <button className="btn btn-secondary" data-bs-toggle="modal" data-bs-target={"#staticBackdropEdit" + id}>
                             <i className="fa fa-trash-o"></i> Edit
                         </button>
-                        <div className="modal fade" id={"staticBackdropEdit" + props.index} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal fade" id={"staticBackdropEdit" + id} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div className="modal-dialog modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Edit Product</h5>
                                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">
-                                        <ProductFormEdit productid={id} productname={name} />
+                                        <ProductFormEdit
+                                            id={id}
+                                        />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         {/* delete modal */}
-                        <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + props.index}>
+                        <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + id}>
                             <i className="fa fa-trash-o"></i> Delete
                         </button>
-                        <div className="modal fade" id={"staticBackdrop" + props.index} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div className="modal fade" id={"staticBackdrop" + id} data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div className="modal-dialog modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">
