@@ -10,6 +10,7 @@ const userRoutes = require("./app/routes/user");
 const categoryRoutes = require("./app/routes/category");
 const productRoutes = require("./app/routes/product");
 const orderRoutes = require("./app/routes/order");
+const addressRoutes = require("./app/routes/address");
 
 // middlewares for parsing
 app.use(express.json());
@@ -39,7 +40,7 @@ app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", orderRoutes);
-
+app.use("/api", addressRoutes);
 const PORT = 8000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`)
