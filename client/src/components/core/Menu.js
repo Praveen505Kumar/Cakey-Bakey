@@ -31,16 +31,44 @@ const Menu = (props) => {
                 console.log(error);
             })
     }, []);
+    const displayProducts = (category) => {
+        if (products.length !== 0) {
+            const filteredProducts = products.filter(product => product.category.name === category.name);
+            if (filteredProducts.length !== 0) {
+                console.log(filteredProducts);
+                return (
+                    <Fragment key={category._id}>
+                        <div className="d-flex">
+                            <h2 className="">{category.name}</h2>
+                            <div className="cat-line flex-grow-1 my-auto ms-2"></div>
+                        </div>
+                        <div className="d-flex flex-wrap">
+                            {filteredProducts.map(product => {
+                                return (
+                                    <Item name={product.name}
+                                        description={product.description}
+                                        price={product.price}
+                                        id={product._id}
+                                        key={product._id}
+                                    />
+                                )
+                            })}
+                        </div>
+                    </Fragment>
+                );
+            }
+        }
+        return (<div></div>);
+    };
 
     return (
         <div>
             <Navbar />
             <div className="container header-pad">
-                {/* <h1>MENU</h1> */}
-                <div class="d-flex justify-content-between align-items-center">
+                <div className="d-flex justify-content-between align-items-center">
                     <h1>MENU</h1>
-                    <div class="col-xs-6">
-                        <Link to="/cart" class="btn btn-primary btn-block" >
+                    <div className="col-xs-6">
+                        <Link to="/cart" className="btn btn-primary btn-block" >
                             <span className='bi bi-cart-fill' ></span>Cart</Link>
                     </div>
                 </div>
@@ -48,27 +76,28 @@ const Menu = (props) => {
                 <div className="row mt-4">
                     <div className=" sample">
                         {categories && categories.map(category => {
-                            return (
-                                <Fragment>
-                                    <div className="d-flex">
-                                        <h2 className="">{category.name}</h2>
-                                        <div className="cat-line flex-grow-1 my-auto ms-2"></div>
-                                    </div>
-                                    <div className="d-flex flex-wrap">
-                                        {products && products.filter(product => product.category.name === category.name).map(product => {
-                                            return (
-                                                <Item name={product.name}
-                                                    description={product.description}
-                                                    price={product.price}
-                                                    id={product._id}
-                                                    key={product._id}
-                                                // arrayBuffer={product.photo.data.data}
-                                                />
-                                            )
-                                        })}
-                                    </div>
-                                </Fragment>
-                            );
+                            { return displayProducts(category) }
+                            // return (
+                            //     <Fragment key={category._id}>
+                            //         <div className="d-flex">
+                            //             <h2 className="">{category.name}</h2>
+                            //             <div className="cat-line flex-grow-1 my-auto ms-2"></div>
+                            //         </div>
+                            //         <div className="d-flex flex-wrap">
+                            //             {products && products.filter(product => product.category.name === category.name).map(product => {
+                            //                 return (
+                            //                     <Item name={product.name}
+                            //                         description={product.description}
+                            //                         price={product.price}
+                            //                         id={product._id}
+                            //                         key={product._id}
+                            //                     // arrayBuffer={product.photo.data.data}
+                            //                     />
+                            //                 )
+                            //             })}
+                            //         </div>
+                            //     </Fragment>
+                            // );
                         })}
                     </div>
 

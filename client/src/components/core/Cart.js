@@ -8,9 +8,6 @@ const Cart = (props) => {
     return (
 
         <div className="sticky-md-top item-body cart-position shadow-lg">
-
-
-
             {props.cart.length > 0 ?
                 (<div class="d-flex justify-content-between align-items-center mb-4 p-2 shadow">
                     <h3>Cart</h3><div class="col-xs-6">
@@ -28,24 +25,18 @@ const Cart = (props) => {
 
             {props.cart.length > 0 ?
                 (<div>
-
                     <div className="overflow-auto scroll" style={{ height: 270 }}>
                         {display}
 
                     </div>
-
                     <div class="position-absolute bottom-0 start-50 translate-middle-x cartbottom shadow-lg pt-2">
                         <h5>Total:<span>
                             <strong>&#8377;</strong> {props.price}
                         </span></h5>
-
                         <button type="submit" className="btn btn-lg btn-primary cartbtn">GoTo Cart</button>
-
                     </div>
-
-                </div>) :
-                null}
-
+                </div>) : null
+            }
         </div>
 
     );

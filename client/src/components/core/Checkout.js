@@ -47,28 +47,28 @@ const Checkout = () => {
                             <div className="form-check my-2">
                                 <input className="form-check-input" type="radio"
                                     name="ModeOfPayment" id="CashOnDelivery"></input>
-                                <label className="form-check-label" for="CashOnDelivery">Cash on Delivery</label>
+                                <label className="form-check-label" >Cash on Delivery</label>
                             </div>
                         </div>
                         <div className="col-12 mt-4">
                             <div className="form-check my-2">
                                 <input className="form-check-input" type="radio"
-                                    name="ModeOfPayment" id="Wallet"></input>
-                                <label className="form-check-label" for="Wallet">Wallet</label>
+                                    name="ModeOfPayment" id="Wallet" disabled></input>
+                                <label className="form-check-label" >Wallet</label>
                             </div>
                         </div>
                         <div className="col-12 mt-4">
                             <div className="form-check my-2">
                                 <input className="form-check-input" type="radio"
-                                    name="ModeOfPayment" id="CreditOrDebit"></input>
-                                <label className="form-check-label" for="CreditOrDebit">Credit / Debit Card</label>
+                                    name="ModeOfPayment" id="CreditOrDebit" disabled></input>
+                                <label className="form-check-label">Credit / Debit Card</label>
                             </div>
                         </div>
                         <div className="col-12 mt-4">
                             <div className="form-check my-2">
                                 <input className="form-check-input" type="radio"
-                                    name="ModeOfPayment" id="Netbanking"></input>
-                                <label className="form-check-label" for="Netbanking">Netbanking</label>
+                                    name="ModeOfPayment" id="Netbanking" disabled></input>
+                                <label className="form-check-label">Netbanking</label>
                             </div>
                         </div>
                         <div className="col-12">

@@ -44,11 +44,6 @@ const App = () => {
         <Route path="/cart" element={<Cartpage />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/user/profile" element={<Profile />} />
-
-
-
-
-
       </Routes>
     </BrowserRouter>
   );

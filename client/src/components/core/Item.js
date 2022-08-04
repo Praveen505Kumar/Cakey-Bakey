@@ -18,8 +18,14 @@ const Item = (props) => {
         description: description
     }
     return (
-        <div className="card cake-card me-2 my-3 shadow-sm" style={{ width: 230 }}>
-            <img src={"http://localhost:8000/api/product/photo/" + id} className="card-img-top" alt="..."></img>
+        <div className="card cake-card me-2 my-3 shadow-sm" style={{ width: 250 }}>
+            <div>
+                <img src={"http://localhost:8000/api/product/photo/" + id}
+                    className="card-img-top"
+                    style={{ width: 250, height: 180 }}
+                    alt="..."
+                ></img>
+            </div>
             <div className="card-body item-body rounded-3">
                 <h5 className="card-title">{name.length > 20 ? (name.substr(0, 20) + "...") : (name)}</h5>
                 <p className="card-text text-muted">{description.length > 50 ? (description.substr(0, 50) + "...") : (description)}</p>
