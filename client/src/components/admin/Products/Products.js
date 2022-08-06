@@ -69,7 +69,7 @@ const Products = (props) => {
             </div>
             </div> */}
                 <div className="row mt-1">
-                    <div className="col-md-8 sample">
+                    <div className="col-md-12 sample">
 
                         {categories && categories.map(category => {
                             return (

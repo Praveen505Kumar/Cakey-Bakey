@@ -10,11 +10,12 @@ const Item = (props) => {
         const user = JSON.parse(localStorage.getItem("sample"))
         role = user.role
     }
-    const { name, description, id, price } = props;
+    const { name, description, id, price, category } = props;
     const item = {
         id: id,
         name: name,
         price: price,
+        category: category,
         description: description
     }
     return (

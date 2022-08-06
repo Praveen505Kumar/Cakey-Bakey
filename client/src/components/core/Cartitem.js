@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../redux/Cart/action"
 const Cartitem = (props) => {
-    const { name, description, id, price } = props
+    const { name, description, id, price, category } = props
     const item = {
         id: id,
         name: name,
         price: price,
         description: description,
+        category: category
 
     }
     return (

@@ -86,7 +86,7 @@ const SigninForm = (props) => {
                             {values.error && (<div className="alert alert-danger py-2" role="alert">
                                 Error:{values.error}
                             </div>)}
-                            {values.success && (values.role ? <Navigate to="/admin/home" /> : <Navigate to="/user/home" />)}
+                            {values.success && (values.role ? <Navigate to="/admin/home" /> : <Navigate to="/" />)}
                         </div>
                     </div>
                 </div>

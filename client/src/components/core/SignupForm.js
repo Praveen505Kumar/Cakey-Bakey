@@ -7,19 +7,18 @@ const SignupForm = () => {
     const [values, setValues] = useState({
         name: "",
         email: "",
-        address: "",
         password: "",
         error: "",
         success: false
     })
-    const { name, email, address, password, error, success } = values;
+    const { name, email, password, error, success } = values;
     const handleChange = (e) => {
         setValues({ ...values, [e.target.name]: e.target.value })
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.post('http://localhost:8000/api/signup', { email, name, address, password })
+        axios.post('http://localhost:8000/api/signup', { email, name, password })
             .then(response => {
                 setValues({ ...values, success: true, error: false });
 
@@ -76,7 +75,7 @@ const SignupForm = () => {
                                         placeholder="Mobile number"
                                     />
                                 </div> */}
-                                <div className="input-group mb-3">
+                                {/* <div className="input-group mb-3">
                                     <span className="input-group-text">
                                         <i className="bi bi-geo-alt"></i>
                                     </span>
@@ -88,7 +87,7 @@ const SignupForm = () => {
                                         required
                                         onChange={handleChange}
                                     />
-                                </div>
+                                </div> */}
                                 <div className="input-group mb-3">
                                     <span className="input-group-text">
                                         <i className="bi bi-lock"></i>

@@ -1,10 +1,42 @@
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import CheckoutForm from "./CheckoutForm";
-const Checkout = () => {
-    const states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", " Goa", " Gujarat", " Haryana", "Himachal Pradesh"
-        , "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", " Madhya Pradesh", "Maharashtra", "Manipu", "Meghalaya", "Mizoram", "Nagaland"
-        , " Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "  Telangana", " Tripura", " Uttar Pradesh", " Uttarakhand", "West Bengal"]
+import { Navigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { clearCart } from "../../redux/Cart/action";
+import axios from "axios";
+import { useState } from "react";
+const Checkout = (props) => {
+    console.log(props)
+    const [values, setValues] = useState({ mode: "", success: "", error: "" })
+
+    const handleChange = (e) => {
+        setValues({ ...values, mode: e.target.value });
+
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(values.mode)
+        if (values.mode === "CashOnDelivery") {
+            const products = props.cart
+            const user = JSON.parse(localStorage.getItem("sample"))
+            axios.post('http://localhost:8000/api/order/create/' + user._id, { order: { products } })
+                .then(response => {
+                    setValues({ ...values, error: false, success: true });
+                    console.log(response.data);
+                    props.clearCart();
+                    // alert('category added!!');
+                })
+                .catch(error => {
+                    setValues({ ...values, error: error.response.data.error, success: false });
+                    console.log(error);
+                })
+        }
+    };
+    // const states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", " Goa", " Gujarat", " Haryana", "Himachal Pradesh"
+    //     , "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", " Madhya Pradesh", "Maharashtra", "Manipu", "Meghalaya", "Mizoram", "Nagaland"
+    //     , " Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "  Telangana", " Tripura", " Uttar Pradesh", " Uttarakhand", "West Bengal"]
     return (
         <div>
             <Navbar />
@@ -72,41 +104,42 @@ const Checkout = () => {
                                 <div className="cat-line flex-grow-1 my-auto ms-2"></div>
                             </div>
                         </div>
-                        <form>
+                        <form onChange={handleChange}>
                             <div className="col-12 mt-4">
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
-                                        name="ModeOfPayment" id="CashOnDelivery" ></input>
+                                        name="ModeOfPayment" value="CashOnDelivery" ></input>
                                     <label className="form-check-label" for="CashOnDelivery">Cash on Delivery</label>
                                 </div>
                             </div>
                             <div className="col-12 mt-4">
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
-                                        name="ModeOfPayment" id="Wallet" disabled="disabled"></input>
+                                        name="ModeOfPayment" value="Wallet" disabled="disabled"></input>
                                     <label className="form-check-label" for="Wallet" >Wallet</label>
                                 </div>
                             </div>
                             <div className="col-12 mt-4">
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
-                                        name="ModeOfPayment" id="CreditOrDebit" disabled="disabled"></input>
+                                        name="ModeOfPayment" value="CreditOrDebit" disabled="disabled"></input>
                                     <label className="form-check-label" for="CreditOrDebit">Credit / Debit Card</label>
                                 </div>
                             </div>
                             <div className="col-12 mt-4">
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
-                                        name="ModeOfPayment" id="Netbanking" disabled="disabled"></input>
+                                        name="ModeOfPayment" value="Netbanking" disabled="disabled"></input>
                                     <label className="form-check-label" for="Netbanking"  >Netbanking</label>
                                 </div>
                             </div>
                             <div className="col-12">
                                 <div className="col-12 my-3">
-                                    <button className="btn btn-primary">Place Orders</button>
+
+                                    <button className="btn btn-primary" onClick={handleSubmit}>Place Orders</button>
                                 </div>
                             </div>
-
+                            {values.success && <Navigate to="/user/ordersuccess" />}
                         </form>
                     </div>
                 </div>
@@ -119,4 +152,13 @@ const Checkout = () => {
         </div>
     );
 }
-export default Checkout;
+const mapStateToProps = state => {
+    return {
+        cart: state.cart.cart,
+        itemMap: state.cart.itemMap
+    }
+};
+const mapDispatchToProps = dispatch => ({
+    clearCart: () => dispatch(clearCart())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);

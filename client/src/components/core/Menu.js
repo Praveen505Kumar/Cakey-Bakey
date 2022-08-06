@@ -48,6 +48,7 @@ const Menu = (props) => {
                                     <Item name={product.name}
                                         description={product.description}
                                         price={product.price}
+                                        category={product.category.name}
                                         id={product._id}
                                         key={product._id}
                                     />

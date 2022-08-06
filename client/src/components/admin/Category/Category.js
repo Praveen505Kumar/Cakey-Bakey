@@ -68,7 +68,7 @@ const Category = () => {
                                         </td>
 
                                         {/* <td className="plain-table-cell">
-                                            
+
                                             <button className="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target={"#staticBackdropedit" + index}>
                                                 Edit
                                             </button>
@@ -87,7 +87,7 @@ const Category = () => {
                                                 </div>
                                             </div>
 
-                                            
+
                                             <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + index}>
                                                 <i className="fa fa-trash-o"></i> Delete
                                             </button>

@@ -67,6 +67,7 @@ const Users = () => {
                                         <td className="plain-table-cell">{index + 1}</td>
                                         <td className="plain-table-cell">{user.name}</td>
                                         <td className="plain-table-cell">{user.email}</td>
+
                                         <td className="plain-table-cell">
                                             {/* edit module
                                             <a className="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target={"#staticBackdropedit" + index}>
