@@ -28,11 +28,11 @@ const Item = (props) => {
                 ></img>
             </div>
             <div className="card-body item-body rounded-3">
-                <h5 className="card-title">{name.length > 20 ? (name.substr(0, 20) + "...") : (name)}</h5>
+                <h5 className="card-title">{name.length > 20 ? (name.substr(0, 40) + "...") : (name)}</h5>
                 <p className="card-text text-muted">{description.length > 50 ? (description.substr(0, 50) + "...") : (description)}</p>
                 <div className="d-flex justify-content-between align-items-center">
                     <span>
-                        <strong>&#8377;</strong> {price}
+                        <strong>&#8377; {price}</strong>
                     </span>
 
                     {role === 1 ? (<Fragment>

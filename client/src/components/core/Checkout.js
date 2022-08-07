@@ -20,8 +20,9 @@ const Checkout = (props) => {
         console.log(values.mode)
         if (values.mode === "CashOnDelivery") {
             const products = props.cart
+            const total_amount = props.totalprice
             const user = JSON.parse(localStorage.getItem("sample"))
-            axios.post('http://localhost:8000/api/order/create/' + user._id, { order: { products } })
+            axios.post('http://localhost:8000/api/order/create/' + user._id, { order: { products, total_amount } })
                 .then(response => {
                     setValues({ ...values, error: false, success: true });
                     console.log(response.data);
@@ -155,7 +156,8 @@ const Checkout = (props) => {
 const mapStateToProps = state => {
     return {
         cart: state.cart.cart,
-        itemMap: state.cart.itemMap
+        itemMap: state.cart.itemMap,
+        totalprice: state.cart.totalPrice
     }
 };
 const mapDispatchToProps = dispatch => ({

@@ -19,7 +19,7 @@ const Cartpage = (props) => {
             <Navbar />
             <div className="header-pad container my-3">
                 {props.cart.length > 0 ?
-                    (<div className="d-flex justify-content-end p-2">
+                    (<div className="d-flex justify-content-end p-1">
                         <div className="col-xs-6">
                             <button type="button" className="btn btn-danger btn-block" onClick={props.clearCart}>Clear Cart</button>
                         </div>
@@ -36,12 +36,11 @@ const Cartpage = (props) => {
                 {props.cart.length > 0 ?
                     (<div>
 
-                        <div className="overflow-auto scroll" style={{ height: 350 }}>
+                        <div className="overflow-auto scroll" style={{ height: 400 }}>
                             {display}
-
                         </div>
 
-                        <div className="pt-2">
+                        <div className="">
                             <h5>Total:<span>
                                 <strong>&#8377;</strong> {props.price}
                             </span></h5>
