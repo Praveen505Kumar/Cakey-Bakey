@@ -1,23 +1,33 @@
 import { connect } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../redux/Cart/action"
 const Cartitem = (props) => {
-    const { name, description, id, price } = props
+    const { name, description, id, price, category } = props
     const item = {
         id: id,
         name: name,
         price: price,
         description: description,
+        category: category
 
     }
     return (
-        <div className="col-xs-4 px-2">
-            <h5 className="card-title">{name}</h5>
-            <p className="card-text text-muted"><small>{description}</small></p>
-            <div className="d-flex justify-content-between align-items-center">
+        <div className="col-xs-4 px-2 row">
+            <div className="col-3">
+                <img src={"http://localhost:8000/api/product/photo/" + id}
+                    className="card-img-top"
+                    style={{ width: 200, height: 150 }}
+                    alt="..."
+                ></img>
+            </div>
+            <div className="col-4">
+                <h5 className="card-title">{name}</h5>
+                <p className="card-text text-muted"><small>{description}</small></p>
                 <span>
                     Price:<strong>&#8377;</strong> {price}
                 </span>
-                <div>
+            </div>
+            <div className="col-4">
+                <div className="d-flex justify-content-end align-items-center">
                     <button className="item-btn" onClick={() => props.removeItemFromCart(item)}>
                         <i className="bi bi-dash-lg"></i>
                     </button>
@@ -29,10 +39,8 @@ const Cartitem = (props) => {
                         <i className="bi bi-plus-lg"></i>
                     </button>
                 </div>
-                {/* <div>
-                    <button className="btn btn-warning" onClick={() => props.removeItemFromCart(item)}>Remove</button>
-                </div> */}
             </div>
+
             <hr />
 
         </div>

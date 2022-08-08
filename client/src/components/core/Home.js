@@ -1,36 +1,18 @@
 import Navbar from './Navbar';
 import Footer from './Footer';
-import Slides from './Slides';
-// import { connect } from "react-redux";
-// import { increaseCounter, decreaseCounter } from "../../redux/Counter/counter.actions";
+import welcome from '../images/welcome.webp';
+import { Link } from 'react-router-dom';
 
-const Home = (props) => {
+const Home = () => {
     return (
         <div className="bg-light">
             <Navbar />
-            <Slides />
-            {/* <div>
-                <div>Count: {props.count}</div>
-                <button onClick={() => props.increaseCounter()}>Increase Count</button>
-                <button onClick={() => props.decreaseCounter()}>Decrease Count</button>
-            </div> */}
+            <div className='d-flex header-pad'>
+                <Link to="/menu"><img src={welcome} className="d-block w-100" alt="..."></img></Link>
+            </div>
             <Footer />
         </div>
     )
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         count: state.counter.count
-//     }
-// };
-
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         increaseCounter: () => dispatch(increaseCounter()),
-//         decreaseCounter: () => dispatch(decreaseCounter())
-//     }
-// };
-
-//export default connect(mapStateToProps, mapDispatchToProps)(Home);
 export default Home;

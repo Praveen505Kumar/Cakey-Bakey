@@ -1,5 +1,7 @@
 const User = require("../models/user.model");
 const mongoose = require("mongoose");
+const { v4: uuidv4 } = require('uuid');
+
 exports.getUserById = (req, res, next, id) => {
     // parse id(string) to object type
     User.findById(mongoose.Types.ObjectId(id)).exec((error, user) => {
@@ -82,14 +84,13 @@ exports.pushOrderInPurchaseList = (req, res, next) => {
     let purchases = [];   // creating temp array push all the products into the array
     req.body.order.products.forEach(product => {
         purchases.push({
-            _id: product._id,
+            _id: product.id,
             name: product.name,
             description: product.description,
             category: product.category,
             quantity: product.quantity,
-            size: product.size,
             price: product.price,
-            transaction_id: req.body.order.transaction_id,
+            transaction_id: uuidv4(),
             date: new Date()   // TODO:
         })
     })

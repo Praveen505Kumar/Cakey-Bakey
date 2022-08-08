@@ -1,4 +1,5 @@
 const { Order } = require("../models/order.model");
+const mongoose = require("mongoose");
 
 exports.getOrderById = (req, res, next, id) => {
     Order.findById(id)
@@ -29,7 +30,18 @@ exports.createOrder = (req, res) => {
 
 exports.getAllOrders = (req, res) => {
     Order.find()
-        .populate("user", "_id name")
+        .populate("user", "_id name email")
+        .exec((error, orders) => {
+            if (error) {
+                return res.status(400).json({
+                    error: "No orders found in DB"
+                })
+            }
+            return res.status(200).json(orders)
+        })
+}
+exports.getAllOrdersByUser = (req, res) => {
+    Order.find({ user: mongoose.Types.ObjectId(req.profile._id) })
         .exec((error, orders) => {
             if (error) {
                 return res.status(400).json({

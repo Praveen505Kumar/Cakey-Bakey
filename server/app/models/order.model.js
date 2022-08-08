@@ -10,14 +10,14 @@ const productCartSchema = new mongoose.Schema({
     name: String,
     quantity: Number,
     size: String,
-    price: Number
+    price: Number,
+    category: String
 })
 const ProductCart = mongoose.model("ProductCart", productCartSchema);
 
 const orderSchema = new mongoose.Schema({
     products: [productCartSchema],
     address: String,
-    transaction_id: {},
     total_amount: Number,
     updated: Date,
     status: {

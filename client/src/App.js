@@ -9,8 +9,7 @@ import Contactus from "./components/about/Contactus";
 import Terms from "./components/about/Terms-conditions";
 import Privacy from "./components/about/privacy-policy";
 import Disclaimer from "./components/about/disclaimer";
-import UserHome from "./components/core/UserHome";
-import Dashboard from "./components/admin/Dashboard";
+import Adminhome from "./components/admin/Adminhome";
 import Users from "./components/admin/Users/Users";
 import Category from "./components/admin/Category/Category";
 import Products from "./components/admin/Products/Products";
@@ -18,7 +17,9 @@ import Orders from "./components/admin/Orders";
 import Logout from "./components/core/Logout";
 import Cartpage from "./components/core/Cartpage";
 import Checkout from "./components/core/Checkout";
-import Profile from "./components/core/Profile"
+import Profile from "./components/core/Profile";
+import Userorders from "./components/core/Userorders";
+import Ordersuccess from "./components/core/Ordersuccess";
 
 const App = () => {
   return (
@@ -34,8 +35,7 @@ const App = () => {
         <Route path="/terms-conditions" element={<Terms />} />
         <Route path="/privacy-policy" element={<Privacy />} />
         <Route path="/disclaimer" element={<Disclaimer />} />
-        <Route path="/user/home" element={<UserHome />} />
-        <Route path="/admin/home" element={<Dashboard />} />
+        <Route path="/admin/home" element={<Adminhome />} />
         <Route path="/userdetails" element={<Users />} />
         <Route path="/category" element={<Category />} />
         <Route path="/products" element={<Products />} />
@@ -44,6 +44,9 @@ const App = () => {
         <Route path="/cart" element={<Cartpage />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/user/profile" element={<Profile />} />
+        <Route path="/user/orders" element={<Userorders />} />
+        <Route path="/user/ordersuccess" element={<Ordersuccess />} />
+
       </Routes>
     </BrowserRouter>
   );
