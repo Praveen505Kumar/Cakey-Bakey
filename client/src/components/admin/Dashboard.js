@@ -7,22 +7,6 @@ const Dashboard = () => {
     return (
         <Fragment>
             <Navbar />
-            {/* <div className="fixed-top bg-light">
-                <div className="navbar navbar-expand-lg navbar-light">
-                    <div className="container">
-
-                        <img src={logo} alt="logo" height="70" width="70" className="rounded logo" />
-
-                        <div className="ms-auto my-auto nav-container d-flex flex-md-row">
-                            <NavLink to="/logout" className="nav-link" activeclassname="nav-link-active">
-                                Logout
-                            </NavLink>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div> */}
 
             <div class="d-lg-block bg-black sidebar header-pad">
                 <NavLink to="/userdetails" className=" nav-link link" >

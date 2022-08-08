@@ -52,7 +52,8 @@ const Category = () => {
                                 <tr className="">
                                     <th>S.no</th>
                                     <th>Category Name</th>
-                                    <th >actions</th>
+                                    <th >enable</th>
+                                    <th>actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -67,7 +68,7 @@ const Category = () => {
                                             </div>
                                         </td>
 
-                                        {/* <td className="plain-table-cell">
+                                        <td className="plain-table-cell">
 
                                             <button className="btn btn-secondary mx-2" data-bs-toggle="modal" data-bs-target={"#staticBackdropedit" + index}>
                                                 Edit
@@ -105,7 +106,7 @@ const Category = () => {
                                                     </div>
                                                 </div>
                                             </div>
-                                        </td> */}
+                                        </td>
                                     </tr>
                                 ))}
 
