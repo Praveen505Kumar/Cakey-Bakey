@@ -1,10 +1,28 @@
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import CheckoutForm from "./CheckoutForm";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import CheckoutFormUpdate from "./CheckoutFormUpdate"
+
+
 const Checkout = () => {
-    const states = ["Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", " Goa", " Gujarat", " Haryana", "Himachal Pradesh"
-        , "Jammu and Kashmir", "Jharkhand", "Karnataka", "Kerala", " Madhya Pradesh", "Maharashtra", "Manipu", "Meghalaya", "Mizoram", "Nagaland"
-        , " Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "  Telangana", " Tripura", " Uttar Pradesh", " Uttarakhand", "West Bengal"]
+    const [address, setAddress] = useState([]);
+
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("sample"))
+        axios.get('http://localhost:8000/api/address/' + user._id)
+            .then((res) => {
+                setAddress(res.data);
+                console.log(res.data)
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+    },
+        []
+    );
+
     return (
         <div>
             <Navbar />
@@ -14,14 +32,9 @@ const Checkout = () => {
                 <div className="row mt-4">
 
                     <h2 className=" ">Location</h2>
-                    <div className="cat-line flex-grow-1 my-auto ms-2"></div>
-                    <div className="alert alert-danger mt-4 px-2">
+
+                    {!address && (<div className="alert alert-danger mt-4 px-2">
                         <strong>No Address Found</strong>
-                    </div>
-                    {/* <span className="my-3 d-inline-block">
-                        <button className="btn btn-primary">Add Address</button>
-                </span>*/}
-                    <div>
                         <div class="d-flex justify-content-start p-2 my-5 mt-0">
                             <button type="button" class="btn btn-Success bcolor" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                 Add Address
@@ -41,6 +54,43 @@ const Checkout = () => {
                                 </div>
                             </div>
                         </div>
+                    </div>)}
+
+                    {address && (<div>
+                        <div>
+                            {address.flatno}<br></br>
+                            {address.streetname}<br></br>
+                            {address.city}<br></br>
+                            {address.state}<br></br>
+                            {address.pincode}<br></br>
+                            {address.phoneno}<br></br>
+                        </div>
+                        <div class="d-flex justify-content-start p-2 my-5 mt-0">
+                            <button type="button" class="btn btn-Success bcolor" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                Update Address
+                            </button>
+                        </div>
+
+                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Update Address</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <CheckoutFormUpdate />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>)}
+
+                    {/* <span className="my-3 d-inline-block">
+                        <button className="btn btn-primary">Add Address</button>
+                </span>*/}
+                    <div>
+
                         {/* <div>
 
                         <strong>Address:</strong>

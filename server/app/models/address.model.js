@@ -16,14 +16,23 @@ const addressSchema = new mongoose.Schema({
     },
     pincode: {
         type: Number,
-        maxlength: 32,
+        minlength: 6,
+        maxlength: 6,
         required: true,
         trim: true
     },
-    user: {
+    phoneno: {
+        type: Number,
+        minlength: 10,
+        maxlength: 10,
+        required: true,
+        trim: true
+    },
+    userId: {
         type: ObjectId,
         ref: "User",
-        required: true
+        required: true,
+        unique: true
     },
     city: {
         type: String,
