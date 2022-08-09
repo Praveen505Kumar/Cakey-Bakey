@@ -4,11 +4,20 @@ import { useState, useEffect } from "react";
 const Orders = () => {
     // const [users, setUsers] = useState([]);
     const [orders, setOrders] = useState([]);
+    const [address, setAddress] = useState(null);
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("sample"))
         axios.get('http://localhost:8000/api/order/all/' + user._id)
             .then((res) => {
                 setOrders(res.data);
+                console.log(res.data)
+            })
+            .catch((err) => {
+                console.log(err.message);
+            });
+        axios.get('http://localhost:8000/api/address/' + user._id)
+            .then((res) => {
+                setAddress(res.data);
                 console.log(res.data)
             })
             .catch((err) => {
@@ -46,7 +55,15 @@ const Orders = () => {
                                         ))}</ol></td>
                                     <td className="plain-table-cell"><strong>&#8377;{order.total_amount}</strong></td>
                                     <td className="plain-table-cell">Name: {order.user.name}<br />MailId: {order.user.email}</td>
-                                    <td className="plain-table-cell">{ }</td>
+                                    <td className="plain-table-cell">{address && (<div>
+
+                                        {address.flatno}, {address.streetname}<br></br>
+                                        {address.city}, {address.state}<br></br>
+                                        PIN: {address.pincode}<br></br>
+                                        +91-{address.phoneno}<br></br>
+                                    </div>)
+
+                                    }</td>
 
                                 </tr>
                             ))}
