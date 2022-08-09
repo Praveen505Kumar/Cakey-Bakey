@@ -86,7 +86,7 @@ const SigninForm = (props) => {
                             {values.error && (<div className="alert alert-danger py-2" role="alert">
                                 Error:{values.error}
                             </div>)}
-                            {values.success && (values.role ? <Navigate to="/admin/home" /> : <Navigate to="/" />)}
+                            {values.success && (values.role ? <Navigate to="/admin/home" /> : props.cart.length > 0 ? <Navigate to="/checkout" /> : <Navigate to="/" />)}
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,8 @@ const SigninForm = (props) => {
 
 const mapStateToProps = state => {
     return {
-        role: state.status.role
+        role: state.status.role,
+        cart: state.cart.cart,
     }
 };
 
