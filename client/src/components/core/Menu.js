@@ -32,7 +32,7 @@ const Menu = (props) => {
             })
     }, []);
     const displayProducts = (category) => {
-        if (products.length !== 0) {
+        if (products.length !== 0 && category.isEnabled === true) {
             const filteredProducts = products.filter(product => product.category.name === category.name);
             if (filteredProducts.length !== 0) {
                 console.log(filteredProducts);

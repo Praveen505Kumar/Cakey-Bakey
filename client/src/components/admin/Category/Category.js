@@ -52,7 +52,7 @@ const Category = () => {
                                 <tr className="">
                                     <th>S.no</th>
                                     <th>Category Name</th>
-                                    <th >enable</th>
+                                    <th >Availabilty</th>
                                     <th>actions</th>
                                 </tr>
                             </thead>
@@ -62,8 +62,9 @@ const Category = () => {
                                         <td className="plain-table-cell">{index + 1}</td>
                                         <td className="plain-table-cell">{category.name}</td>
                                         <td className="plain-table-cell">
-                                            <div class="form-check form-switch">
-                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                            <div >
+                                                {/* class="form-check form-switch"<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" /> */}
+                                                {category.isEnabled ? "enabled" : "disabled"}
 
                                             </div>
                                         </td>
@@ -82,14 +83,14 @@ const Category = () => {
                                                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                         </div>
                                                         <div className="modal-body">
-                                                            <CategoryformEdit categoryid={category._id} categoryname={category.name} />
+                                                            <CategoryformEdit categoryid={category._id} categoryname={category.name} isEnable={category.isEnabled} />
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
 
-                                            <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + index}>
+                                            {/* <button className="btn btn-danger" data-bs-toggle="modal" data-bs-target={"#staticBackdrop" + index}>
                                                 <i className="fa fa-trash-o"></i> Delete
                                             </button>
 
@@ -105,7 +106,7 @@ const Category = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </td>
                                     </tr>
                                 ))}

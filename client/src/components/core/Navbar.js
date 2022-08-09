@@ -60,7 +60,7 @@ const Navbar = () => {
     <div className="fixed-top bg-light">
       <div className="navbar navbar-expand-lg navbar-light">
         <div className="container">
-          <Link to="/" className="text-decoration-none navbar-brand ms-4 ps-5">
+          <Link to="/" className="text-decoration-none navbar-brand ">
             <img src={logo} alt="logo" height="70" width="70" className="rounded logo" />
           </Link>
           <div className="ms-auto my-auto nav-container d-flex flex-md-row">

@@ -13,7 +13,7 @@ const Products = (props) => {
         axios.get("http://localhost:8000/api/products")
             .then(response => {
                 setProducts(response.data);
-                //console.log(response.data);
+                console.log(response.data);
             })
             .catch(error => {
                 console.log(error);

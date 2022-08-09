@@ -51,7 +51,7 @@ const Userorders = () => {
                                     <td className="plain-table-cell">{index + 1}.</td>
                                     <td className="plain-table-cell">{order._id}</td>
                                     <td className="plain-table-cell"><ol>
-                                        {order.products.map((product, index) => (
+                                        {order.products.map((product) => (
                                             <li>Name:{product.name}<br />Category:{product.category}<br />Quantity:{product.quantity}</li>
                                         ))}</ol></td>
                                     <td className="plain-table-cell"><strong>&#8377;</strong>{order.total_amount}</td>

@@ -1,17 +1,26 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const CategoryformEdit = ({ categoryid, categoryname }) => {
-    const [name, setName] = useState("");
+const CategoryformEdit = ({ categoryid, categoryname, isEnable }) => {
+    const [values, setValues] = useState({
+        name: categoryname,
+        isEnabled: isEnable
+    });
     const handleChange = (e) => {
-        setName(e.target.value)
+        setValues({ ...values, [e.target.name]: e.target.value })
+        console.log(e.target)
     };
+    const handleRadioChange = (e) => {
+        setValues({ ...values, isEnabled: e.currentTarget.value === "enabled" ? true : false })
+        console.log(e.currentTarget)
+    };
+
 
     const handleUpdate = (e) => {
         e.preventDefault();
 
         const user = JSON.parse(localStorage.getItem("sample"))
-        axios.put('http://localhost:8000/api/category/' + categoryid + '/' + user._id, { name })
+        axios.put('http://localhost:8000/api/category/' + categoryid + '/' + user._id, { name: values.name, isEnabled: values.isEnabled })
             .then(response => {
                 console.log(response.data);
                 // alert('category deleted!!');
@@ -40,6 +49,24 @@ const CategoryformEdit = ({ categoryid, categoryname }) => {
 
                         />
                     </div>
+                    <label className="col-sm-4 col-form-label py-2">Enable:</label>
+                    <div className="col-sm-8 py-2">
+                        <form >
+                            <div className="col-12 mt-2">
+                                <div className="form-check my-2">
+                                    <input className="form-check-input" type="radio" name="enabled" value="enabled" onChange={handleRadioChange} checked={isEnable} ></input>
+                                    <label className="form-check-label" for="CashOnDelivery">enable</label>
+                                </div>
+                            </div>
+                            <div className="col-12 mt-2">
+                                <div className="form-check my-2">
+                                    <input className="form-check-input" type="radio" name="enabled" value="disabled" onChange={handleRadioChange} ></input>
+                                    <label className="form-check-label" for="disable" >disable</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
 
                 </div>
                 <div className="modal-footer">
