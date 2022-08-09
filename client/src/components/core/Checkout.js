@@ -10,7 +10,7 @@ import CheckoutFormUpdate from "./CheckoutFormUpdate"
 
 
 const Checkout = (props) => {
-    const [address, setAddress] = useState([]);
+    const [address, setAddress] = useState(null);
     const [values, setValues] = useState({ mode: "", success: "", error: "" })
     const handleChange = (e) => {
         setValues({ ...values, mode: e.target.value });
@@ -32,7 +32,7 @@ const Checkout = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(values.mode)
-        if (values.mode === "CashOnDelivery") {
+        if (values.mode === "CashOnDelivery" && address) {
             const products = props.cart
             const total_amount = props.totalprice
             const user = JSON.parse(localStorage.getItem("sample"))
@@ -84,12 +84,11 @@ const Checkout = (props) => {
 
                     {address && (<div>
                         <div>
-                            {address.flatno}<br></br>
-                            {address.streetname}<br></br>
-                            {address.city}<br></br>
-                            {address.state}<br></br>
-                            {address.pincode}<br></br>
-                            {address.phoneno}<br></br>
+                            <strong>Address:</strong><br></br>
+                            {address.flatno}, {address.streetname}<br></br>
+                            {address.city}, {address.state}<br></br>
+                            PIN: {address.pincode}<br></br>
+                            +91-{address.phoneno}<br></br>
                         </div>
                         <div class="d-flex justify-content-start p-2 my-5 mt-0">
                             <button type="button" class="btn btn-Success bcolor" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
