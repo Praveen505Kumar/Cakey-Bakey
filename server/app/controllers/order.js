@@ -31,6 +31,7 @@ exports.createOrder = (req, res) => {
 exports.getAllOrders = (req, res) => {
     Order.find()
         .populate("user", "_id name email")
+        .populate("address")
         .exec((error, orders) => {
             if (error) {
                 return res.status(400).json({

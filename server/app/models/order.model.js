@@ -17,7 +17,10 @@ const ProductCart = mongoose.model("ProductCart", productCartSchema);
 
 const orderSchema = new mongoose.Schema({
     products: [productCartSchema],
-    address: String,
+    address: {
+        type: ObjectId,
+        ref: "Address"
+    },
     total_amount: Number,
     updated: Date,
     status: {
