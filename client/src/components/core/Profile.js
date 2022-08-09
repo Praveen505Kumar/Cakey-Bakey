@@ -24,13 +24,13 @@ const Profile = () => {
         <div>
             <Navbar />
             <div class="container header-pad" style={{ height: 500 }}>
-                <div class="d-flex justify-content-between align-items-center">
-                    <h3>Welcome!!</h3>
-                    <div class="col-xs-6">
+                <div class="d-flex justify-content-end align-items-center">
+
+                    <div class="">
                         <a href="/user/orders" class="btn btn-warning btn-block" >My Orders</a>
                     </div>
                 </div>
-                <div className="card me-2 my-3 shadow" style={{ width: 400, height: 300 }}>
+                <div className="profile card me-2 my-3 shadow" style={{ width: 400, height: 300 }}>
                     <div className="card-body item-body rounded-3">
                         <h3 className="card-title"><i class="bi bi-person-circle p-1"></i>{user.name}</h3>
                         <p ><strong>Email: </strong>{user.email}</p>

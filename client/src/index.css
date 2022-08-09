@@ -200,4 +200,68 @@
   .nav-link {
     margin: 12px 0;
   }
+
+}
+
+@media (max-width: 768px) {
+  .Copyright {
+    font-size: small;
+  }
+
+  .container {}
+
+  .navbar {
+    height: 100px;
+  }
+
+  .logo {
+    height: 80px;
+    padding: 2px;
+  }
+
+  .profile {
+    width: 100%;
+  }
+
+  .card-body {
+    margin: 0;
+    width: 100%;
+  }
+
+  h2 {
+    font-size: px;
+    margin: 12px 0;
+  }
+}
+
+@media (max-width: 568px) {
+  .Copyright {
+    font-size: smaller;
+  }
+
+  .nav-link {
+    font-size: small;
+    margin: 0;
+    padding-left: 1px;
+    padding-top: 0;
+  }
+
+  .navbar {
+    height: 80px;
+  }
+
+  .logo {
+    height: 60px;
+    margin: 1;
+    padding-top: 1px;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin: 12px 0;
+  }
+
+  .card-body {
+    width: 100%;
+  }
 }
