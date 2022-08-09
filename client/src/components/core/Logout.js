@@ -1,10 +1,11 @@
 import { useEffect } from "react";
-import { Navigate } from 'react-router'
-
+import { Navigate } from 'react-router';
 
 const Logout = () => {
+
     useEffect(() => {
-        localStorage.removeItem("sample")
+        localStorage.removeItem("sample");
+        window.location.reload()
     }
     )
     return (

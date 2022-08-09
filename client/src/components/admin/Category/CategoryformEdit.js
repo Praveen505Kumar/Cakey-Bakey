@@ -54,7 +54,7 @@ const CategoryformEdit = ({ categoryid, categoryname, isEnable }) => {
                         <form >
                             <div className="col-12 mt-2">
                                 <div className="form-check my-2">
-                                    <input className="form-check-input" type="radio" name="enabled" value="enabled" onChange={handleRadioChange} checked={isEnable} ></input>
+                                    <input className="form-check-input" type="radio" name="enabled" value="enabled" onChange={handleRadioChange} ></input>
                                     <label className="form-check-label" for="CashOnDelivery">enable</label>
                                 </div>
                             </div>

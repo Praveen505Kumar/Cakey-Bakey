@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { Navigate, Link } from "react-router-dom";
+import Navbar from "./Navbar";
 import axios from "axios"
-const CheckoutForm = () => {
+const CheckoutFormUpdate = () => {
     const [values, setValues] = useState({
         flatno: "",
         streetname: "",
@@ -21,13 +23,13 @@ const CheckoutForm = () => {
         const user = JSON.parse(localStorage.getItem("sample"))
         axios.post('http://localhost:8000/api/address/update/' + user._id, { flatno, streetname, city, pincode, phoneno, userId: user._id, state })
             .then(response => {
-                setValues({ ...values, error: false });
+                setValues({ ...values, error: false, success: true });
                 console.log(response.data);
-                window.location.reload();
+
                 // alert('category added!!');
             })
             .catch(error => {
-                setValues({ ...values, error: error.response.data.error });
+                setValues({ ...values, error: error.response.data.error, success: false });
                 console.log(error);
             })
 
@@ -45,7 +47,7 @@ const CheckoutForm = () => {
                     pincode: address.pincode,
                     phoneno: address.phoneno,
                     state: address.state,
-                    success: true,
+
                     error: false
 
                 });
@@ -54,7 +56,7 @@ const CheckoutForm = () => {
             .catch((err) => {
                 setValues({
                     ...values,
-                    success: false,
+
                     error: err.response.data.error
 
                 })
@@ -80,10 +82,11 @@ const CheckoutForm = () => {
     })
     return (
         <div>
+            <Navbar />
             <form>
 
-                <div class="col-sm-7 mx-auto ">
-
+                <div class="header-pad col-sm-7 mx-auto ">
+                    <h5 class="modal-title">Update Address</h5>
                     <input name="flatno" defaultValue={flatno} type="text" Placeholder="Building Number" className="input" required onChange={handleChange}></input>
                     <input name="streetname" defaultValue={streetname} type="text" Placeholder="Street Name" className="input" required onChange={handleChange}></input>
                     <input name="city" defaultValue={city} type="text" Placeholder="City" className=" input" required onChange={handleChange}></input>
@@ -99,15 +102,16 @@ const CheckoutForm = () => {
                             <button className="btn btn-secondary">Cancel</button>
                         </span>
                         <span className=" Btn my-2 ml-2 ">
+
                             <button className="btn btn-primary ms-4" onClick={handleSubmit} >Update</button>
                         </span>
                     </div>
                 </div>
 
-
+                {success && <Navigate to="/checkout" />}
             </form>
         </div>
 
     );
 }
-export default CheckoutForm;
+export default CheckoutFormUpdate;

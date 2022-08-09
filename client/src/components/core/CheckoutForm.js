@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import { Navigate } from "react-router-dom";
+import Navbar from "./Navbar";
 import axios from "axios"
 const CheckoutForm = () => {
     const [values, setValues] = useState({
@@ -21,13 +23,11 @@ const CheckoutForm = () => {
         const user = JSON.parse(localStorage.getItem("sample"))
         axios.post('http://localhost:8000/api/address/create/' + user._id, { flatno, streetname, city, pincode, phoneno, userId: user._id, state })
             .then(response => {
-                setValues({ ...values, error: false });
+                setValues({ ...values, error: false, success: true });
                 console.log(response.data);
-                window.location.reload();
-                // alert('category added!!');
             })
             .catch(error => {
-                setValues({ ...values, error: error.response.data.error });
+                setValues({ ...values, error: error.response.data.error, success: false });
                 console.log(error);
             })
 
@@ -39,14 +39,16 @@ const CheckoutForm = () => {
         , " Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "  Telangana", " Tripura", " Uttar Pradesh", " Uttarakhand", "West Bengal"]
     return (
         <div>
+            <Navbar />
             <form>
 
-                <div class="col-sm-7 mx-auto ">
-
+                <div class="header-pad col-sm-7 mx-auto ">
+                    <h5 class="modal-title">Add Address</h5>
                     <input name="flatno" type="text" Placeholder="Building Number" className="input" required onChange={handleChange}></input>
                     <input name="streetname" type="text" Placeholder="Street Name" className="input" required onChange={handleChange}></input>
                     <input name="city" type="text" Placeholder="City" className=" input" required onChange={handleChange}></input>
                     <select name="state" className="input " required onChange={handleChange}>
+                        <option>select</option>
                         {states.map((state) => (
                             <option value={state}>{state}</option>
                         ))}
@@ -59,12 +61,12 @@ const CheckoutForm = () => {
                             <button className="btn btn-secondary">Cancel</button>
                         </span>
                         <span className=" Btn my-2 ml-2 ">
-                            <button className="btn btn-primary ms-4" onClick={handleSubmit} >Update</button>
+                            <button className="btn btn-primary ms-4" onClick={handleSubmit} >Add</button>
                         </span>
                     </div>
                 </div>
 
-
+                {success && <Navigate to="/checkout" />}
             </form>
         </div>
 

@@ -20,6 +20,8 @@ import Checkout from "./components/core/Checkout";
 import Profile from "./components/core/Profile";
 import Userorders from "./components/core/Userorders";
 import Ordersuccess from "./components/core/Ordersuccess";
+import CheckoutFormUpdate from "./components/core/CheckoutFormUpdate";
+import CheckoutForm from "./components/core/CheckoutForm";
 
 const App = () => {
   return (
@@ -45,6 +47,8 @@ const App = () => {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/user/profile" element={<Profile />} />
         <Route path="/user/orders" element={<Userorders />} />
+        <Route path="/updateaddress" element={<CheckoutFormUpdate />} />
+        <Route path="/addaddress" element={<CheckoutForm />} />
         <Route path="/user/ordersuccess" element={<Ordersuccess />} />
 
       </Routes>
