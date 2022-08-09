@@ -1,14 +1,21 @@
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import CheckoutForm from "./CheckoutForm";
+import { Navigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { clearCart } from "../../redux/Cart/action";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import CheckoutFormUpdate from "./CheckoutFormUpdate"
 
 
-const Checkout = () => {
+const Checkout = (props) => {
     const [address, setAddress] = useState([]);
-
+    const [values, setValues] = useState({ mode: "", success: "", error: "" })
+    const handleChange = (e) => {
+        setValues({ ...values, mode: e.target.value });
+        console.log(e.target)
+    };
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("sample"))
         axios.get('http://localhost:8000/api/address/' + user._id)
@@ -22,7 +29,26 @@ const Checkout = () => {
     },
         []
     );
-
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(values.mode)
+        if (values.mode === "CashOnDelivery") {
+            const products = props.cart
+            const total_amount = props.totalprice
+            const user = JSON.parse(localStorage.getItem("sample"))
+            axios.post('http://localhost:8000/api/order/create/' + user._id, { order: { products, total_amount } })
+                .then(response => {
+                    setValues({ ...values, error: false, success: true });
+                    console.log(response.data);
+                    props.clearCart();
+                    // alert('category added!!');
+                })
+                .catch(error => {
+                    setValues({ ...values, error: error.response.data.error, success: false });
+                    console.log(error);
+                })
+        }
+    };
     return (
         <div>
             <Navbar />
@@ -122,41 +148,41 @@ const Checkout = () => {
                                 <div className="cat-line flex-grow-1 my-auto ms-2"></div>
                             </div>
                         </div>
-                        <form>
+                        <form onChange={handleChange}>
                             <div className="col-12 mt-4">
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
-                                        name="ModeOfPayment" id="CashOnDelivery" ></input>
+                                        name="ModeOfPayment" value="CashOnDelivery" ></input>
                                     <label className="form-check-label" for="CashOnDelivery">Cash on Delivery</label>
                                 </div>
                             </div>
                             <div className="col-12 mt-4">
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
-                                        name="ModeOfPayment" id="Wallet" disabled="disabled"></input>
+                                        name="ModeOfPayment" value="Wallet" disabled="disabled"></input>
                                     <label className="form-check-label" for="Wallet" >Wallet</label>
                                 </div>
                             </div>
                             <div className="col-12 mt-4">
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
-                                        name="ModeOfPayment" id="CreditOrDebit" disabled="disabled"></input>
+                                        name="ModeOfPayment" value="CreditOrDebit" disabled="disabled"></input>
                                     <label className="form-check-label" for="CreditOrDebit">Credit / Debit Card</label>
                                 </div>
                             </div>
                             <div className="col-12 mt-4">
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
-                                        name="ModeOfPayment" id="Netbanking" disabled="disabled"></input>
+                                        name="ModeOfPayment" value="Netbanking" disabled="disabled"></input>
                                     <label className="form-check-label" for="Netbanking"  >Netbanking</label>
                                 </div>
                             </div>
                             <div className="col-12">
                                 <div className="col-12 my-3">
-                                    <button className="btn btn-primary">Place Orders</button>
+                                    <button className="btn btn-primary" onClick={handleSubmit}>Place Orders</button>
                                 </div>
                             </div>
-
+                            {values.success && <Navigate to="/user/ordersuccess" />}
                         </form>
                     </div>
                 </div>
@@ -169,4 +195,14 @@ const Checkout = () => {
         </div>
     );
 }
-export default Checkout;
+const mapStateToProps = state => {
+    return {
+        cart: state.cart.cart,
+        itemMap: state.cart.itemMap,
+        totalprice: state.cart.totalPrice
+    }
+};
+const mapDispatchToProps = dispatch => ({
+    clearCart: () => dispatch(clearCart())
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Checkout);
