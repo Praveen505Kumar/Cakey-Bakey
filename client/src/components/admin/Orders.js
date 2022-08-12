@@ -17,7 +17,7 @@ const Orders = () => {
     }, []);
 
     return (
-        <div className="header-pad">
+        <div className="header-pad admin">
             <Dashboard />
             <div className="col-md-12 adminscrn">
                 <h1>Orders</h1>

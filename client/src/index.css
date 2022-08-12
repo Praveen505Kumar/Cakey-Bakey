@@ -41,6 +41,10 @@
 
 }
 
+.admin {
+  background: linear-gradient(90deg, #4ca1af, #c4e0e5);
+}
+
 .adminscrn {
   padding-left: 160px;
 }

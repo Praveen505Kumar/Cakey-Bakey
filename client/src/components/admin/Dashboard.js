@@ -8,7 +8,7 @@ const Dashboard = () => {
         <Fragment>
             <Navbar />
 
-            <div class="d-lg-block bg-black sidebar header-pad">
+            <div class="d-lg-block bg-dark sidebar header-pad">
                 <NavLink to="/userdetails" className=" nav-link link" >
                     Users
                 </NavLink>

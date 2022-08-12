@@ -26,15 +26,6 @@ const Userorders = () => {
                 console.log(err.message);
             });
 
-        // axios.get('http://localhost:8000/api/users')
-        //     .then((res) => {
-        //         setUsers(res.data);
-        //         console.log(res.data)
-        //     })
-        //     .catch((err) => {
-        //         console.log(err.message);
-        //     });
-
     },
         []
     );
@@ -51,7 +42,7 @@ const Userorders = () => {
                                 <th>Order Id</th>
                                 <th>Product details</th>
                                 <th>Total Bill</th>
-                                <th >Address</th>
+                                {/* <th >Address</th> */}
 
                             </tr>
                         </thead>
@@ -66,7 +57,7 @@ const Userorders = () => {
                                         ))}</ol></td>
                                     <td className="plain-table-cell"><strong>&#8377;</strong>{order.total_amount}</td>
 
-                                    <td className="plain-table-cell">{address && (<div>
+                                    {/* <td className="plain-table-cell">{address && (<div>
 
                                         {address.flatno}, {address.streetname}<br></br>
                                         {address.city}, {address.state}<br></br>
@@ -74,7 +65,7 @@ const Userorders = () => {
                                         +91-{address.phoneno}<br></br>
                                     </div>)
 
-                                    }</td>
+                                    }</td> */}
 
                                 </tr>
                             ))}

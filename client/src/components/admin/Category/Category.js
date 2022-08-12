@@ -2,7 +2,7 @@ import Dashboard from "../Dashboard";
 import axios from "axios";
 import { useState, useEffect, Fragment } from "react";
 import CategoryFormAdd from "./CategoryformAdd"
-import CategoryformDelete from "./CategoryformDelete";
+// import CategoryformDelete from "./CategoryformDelete";
 import CategoryformEdit from "./CategoryformEdit";
 const Category = () => {
     const [categories, setCategories] = useState([]);
@@ -23,7 +23,7 @@ const Category = () => {
     return (
         <Fragment>
 
-            <div className=" header-pad">
+            <div className=" header-pad admin">
                 <Dashboard />
                 <div className="col-md-11 adminscrn">
                     <h1>Category</h1>
@@ -63,7 +63,6 @@ const Category = () => {
                                         <td className="plain-table-cell">{category.name}</td>
                                         <td className="plain-table-cell">
                                             <div >
-                                                {/* class="form-check form-switch"<input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" /> */}
                                                 {category.isEnabled ? "enabled" : "disabled"}
 
                                             </div>

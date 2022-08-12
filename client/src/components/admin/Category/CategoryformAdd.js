@@ -45,18 +45,6 @@ const CategoryFormAdd = () => {
                         />
                     </div>
                 </div>
-                {/* <div class="row mb-3">
-                    <label class="col-sm-4 col-form-label">Comments:</label>
-                    <div class="col-sm-8">
-                        <input
-                            type="comments"
-                            name="comments"
-                            className="form-control"
-                            placeholder="optional"
-
-                        />
-                    </div>
-                </div> */}
                 <div className="modal-footer">
                     <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     <button type="submit" onClick={handleSubmit} className="btn btn-success">Add</button>

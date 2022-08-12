@@ -64,12 +64,6 @@ const Navbar = () => {
             <img src={logo} alt="logo" height="70" width="70" className="rounded logo" />
           </Link>
           <div className="ms-auto my-auto nav-container d-flex flex-md-row">
-            {/* <NavLink to="/" className="nav-link" activeclassname="nav-link-active">
-              Home
-            </NavLink>
-            <NavLink to="/menu" className="nav-link" activeclassname="nav-link-active">
-              Menu
-            </NavLink> */}
             {displayNav()}
           </div>
 

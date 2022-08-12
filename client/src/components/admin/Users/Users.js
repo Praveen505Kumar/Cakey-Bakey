@@ -26,9 +26,9 @@ const Users = () => {
         []
     );
     return (
-        <div>
+        <div className="admin">
 
-            <div className="header-pad">
+            <div className="header-pad ">
                 <Dashboard />
                 <div className="col-md-11 adminscrn">
                     <h1>Users</h1>

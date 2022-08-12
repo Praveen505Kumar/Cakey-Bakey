@@ -65,29 +65,7 @@ const SignupForm = () => {
                                         onChange={handleChange}
                                     />
                                 </div>
-                                {/* <div className="input-group mb-3">
-                                    <span className="input-group-text">
-                                        <i className="bi bi-phone"></i>
-                                    </span>
-                                    <input
-                                        type="mobile"
-                                        className="form-control"
-                                        placeholder="Mobile number"
-                                    />
-                                </div> */}
-                                {/* <div className="input-group mb-3">
-                                    <span className="input-group-text">
-                                        <i className="bi bi-geo-alt"></i>
-                                    </span>
-                                    <input
-                                        type="address"
-                                        name="address"
-                                        className="form-control"
-                                        placeholder="Address"
-                                        required
-                                        onChange={handleChange}
-                                    />
-                                </div> */}
+
                                 <div className="input-group mb-3">
                                     <span className="input-group-text">
                                         <i className="bi bi-lock"></i>

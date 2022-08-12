@@ -29,7 +29,7 @@ const Products = (props) => {
             })
     }, []);
     return (
-        <div>
+        <div className="admin">
             <Dashboard />
             <div class="header-pad adminscrn">
                 <h1>Products</h1>
@@ -53,21 +53,6 @@ const Products = (props) => {
                         </div>
                     </div>
                 </div>
-
-                {/* <div className="card cake-card me-2 my-3 shadow-sm" style={{ width: 230 }}>
-               <div className="card-body ">
-             <img className="card-img-top" src={img1} alt="no image"></img>
-            <h5 className="card-title text-left">cake name</h5>
-            <p className="card-text">This is a longer card with supporting.</p>
-            <button  class="btn btn-success mx-3" > Add 
-            </button>
-            <button class="btn btn-danger ">
-            <i class="fa fa-trash-o"></i> Delete
-            </button>
-            </div>
-            
-            </div>
-            </div> */}
                 <div className="row mt-1">
                     <div className="col-md-12 sample">
 

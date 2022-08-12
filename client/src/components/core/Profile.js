@@ -45,30 +45,6 @@ const Profile = () => {
                         }
                     </div>
                 </div>
-
-                {/* <table className="table">
-                    <thead>
-                        <tr className="">
-
-                            <th>Name</th>
-                            <th>Email</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        <tr className="plain-table-row" key={user._id}>
-
-                            <td className="plain-table-cell">{user.name}</td>
-                            <td className="plain-table-cell">{user.email}</td>
-
-
-
-                        </tr>
-
-
-                    </tbody>
-                </table> */}
             </div>
             <Footer />
         </div>
