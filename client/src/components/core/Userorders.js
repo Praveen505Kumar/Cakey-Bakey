@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 const Userorders = () => {
     const [orders, setOrders] = useState([]);
-    const [address, setAddress] = useState(null);
+    // const [address, setAddress] = useState(null);
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("sample"))
         axios.get('http://localhost:8000/api/order/all/user/' + user._id)
@@ -17,14 +17,14 @@ const Userorders = () => {
                 console.log(err.message);
             });
 
-        axios.get('http://localhost:8000/api/address/' + user._id)
-            .then((res) => {
-                setAddress(res.data);
-                console.log(res.data)
-            })
-            .catch((err) => {
-                console.log(err.message);
-            });
+        // axios.get('http://localhost:8000/api/address/' + user._id)
+        //     .then((res) => {
+        //         setAddress(res.data);
+        //         console.log(res.data)
+        //     })
+        //     .catch((err) => {
+        //         console.log(err.message);
+        //     });
 
     },
         []
@@ -32,10 +32,10 @@ const Userorders = () => {
     return (
         <div className="header-pad">
             <Navbar />
-            <div class="container my-3" >
+            <div className="container my-3" >
                 <h1>Orders</h1>
                 <div>
-                    <table className="table">
+                    <table className="table table-bordered table-striped">
                         <thead>
                             <tr className="">
                                 <th>S.No</th>
@@ -52,8 +52,8 @@ const Userorders = () => {
                                     <td className="plain-table-cell">{index + 1}.</td>
                                     <td className="plain-table-cell">{order._id}</td>
                                     <td className="plain-table-cell"><ol>
-                                        {order.products.map((product) => (
-                                            <li>Name:{product.name}<br />Category:{product.category}<br />Quantity:{product.quantity}</li>
+                                        {order.products.map((product, idx) => (
+                                            <li key={idx}>Name:{product.name}<br />Category:{product.category}<br />Quantity:{product.quantity}</li>
                                         ))}</ol></td>
                                     <td className="plain-table-cell"><strong>&#8377;</strong>{order.total_amount}</td>
 

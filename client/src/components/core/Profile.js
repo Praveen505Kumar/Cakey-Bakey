@@ -8,7 +8,6 @@ const Profile = () => {
     const [address, setAddress] = useState(null);
     const user = JSON.parse(localStorage.getItem("sample"));
     useEffect(() => {
-
         axios.get('http://localhost:8000/api/address/' + user._id)
             .then((res) => {
                 setAddress(res.data);
@@ -34,15 +33,18 @@ const Profile = () => {
                     <div className="card-body item-body rounded-3">
                         <h3 className="card-title"><i class="bi bi-person-circle p-1"></i>{user.name}</h3>
                         <p ><strong>Email: </strong>{user.email}</p>
-                        {address && (<div>
+                        <div>
                             <strong>Address:</strong><br></br>
-                            {address.flatno}, {address.streetname}<br></br>
-                            {address.city}, {address.state}<br></br>
-                            PIN: {address.pincode}<br></br>
-                            +91-{address.phoneno}<br></br>
-                        </div>)
-
-                        }
+                            {address ? (
+                                <p>
+                                    {address.flatno}, {address.streetname}<br></br>
+                                    {address.city}, {address.state}<br></br>
+                                    PIN: {address.pincode}<br></br>
+                                    +91-{address.phoneno}<br></br>
+                                </p>
+                            ) : (<p>No Address Found</p>)
+                            }
+                        </div>
                     </div>
                 </div>
             </div>

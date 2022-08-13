@@ -12,7 +12,6 @@ const Checkout = (props) => {
     const [values, setValues] = useState({ mode: "", success: "", error: "" })
     const handleChange = (e) => {
         setValues({ ...values, mode: e.target.value });
-        console.log(e.target)
     };
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("sample"))
@@ -30,7 +29,7 @@ const Checkout = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(address)
-        if (values.mode === "CashOnDelivery" && address) {
+        if (values.mode === "CashOnDelivery" && address && (props.cart.length > 0)) {
             const products = props.cart
             const total_amount = props.totalprice
             const user = JSON.parse(localStorage.getItem("sample"))
@@ -47,13 +46,16 @@ const Checkout = (props) => {
                 })
         }
         else if (values.mode !== "CashOnDelivery" && !address) {
-            setValues({ ...values, error: "please select Payment and address ", success: false });
+            setValues({ ...values, error: "Please Select Payment Method and Address ", success: false });
         }
         else if (values.mode === "CashOnDelivery" && !address) {
-            setValues({ ...values, error: "please update address ", success: false });
+            setValues({ ...values, error: "Please Update Address ", success: false });
+        }
+        else if (props.cart.length < 1) {
+            setValues({ ...values, error: "Cart is Empty!", success: false });
         }
         else {
-            setValues({ ...values, error: "please select payment method  ", success: false });
+            setValues({ ...values, error: "Please Select Payment method  ", success: false });
         }
     };
     return (
@@ -68,8 +70,8 @@ const Checkout = (props) => {
 
                     {!address && (<div className="alert alert-danger mt-4 px-2">
                         <strong>No Address Found</strong>
-                        <div class="d-flex justify-content-start p-2 my-5 mt-0">
-                            <Link to="/addaddress" class="btn btn-Success bcolor">
+                        <div className="d-flex justify-content-start p-2 my-5 mt-0">
+                            <Link to="/addaddress" className="btn btn-Success bcolor">
                                 Add Address
                             </Link>
                         </div>
@@ -83,8 +85,8 @@ const Checkout = (props) => {
                             PIN: {address.pincode}<br></br>
                             +91-{address.phoneno}<br></br>
                         </div>
-                        <div class="d-flex justify-content-start p-2 my-5 mt-0">
-                            <Link to="/updateaddress" class="btn btn-Success bcolor">
+                        <div className="d-flex justify-content-start p-2 my-5 mt-0">
+                            <Link to="/updateaddress" className="btn btn-Success bcolor">
                                 Update Address
                             </Link>
                         </div>
@@ -103,28 +105,28 @@ const Checkout = (props) => {
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
                                         name="ModeOfPayment" value="CashOnDelivery" ></input>
-                                    <label className="form-check-label" for="CashOnDelivery">Cash on Delivery</label>
+                                    <label className="form-check-label" >Cash on Delivery</label>
                                 </div>
                             </div>
                             <div className="col-12 mt-4">
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
                                         name="ModeOfPayment" value="Wallet" disabled="disabled"></input>
-                                    <label className="form-check-label" for="Wallet" >Wallet</label>
+                                    <label className="form-check-label" >Wallet</label>
                                 </div>
                             </div>
                             <div className="col-12 mt-4">
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
                                         name="ModeOfPayment" value="CreditOrDebit" disabled="disabled"></input>
-                                    <label className="form-check-label" for="CreditOrDebit">Credit / Debit Card</label>
+                                    <label className="form-check-label" >Credit / Debit Card</label>
                                 </div>
                             </div>
                             <div className="col-12 mt-4">
                                 <div className="form-check my-2">
                                     <input className="form-check-input" type="radio"
                                         name="ModeOfPayment" value="Netbanking" disabled="disabled"></input>
-                                    <label className="form-check-label" for="Netbanking"  >Netbanking</label>
+                                    <label className="form-check-label">Netbanking</label>
                                 </div>
                             </div>
                             <div className="col-12">
@@ -133,7 +135,7 @@ const Checkout = (props) => {
                                 </div>
                             </div>
                             {values.error && (<div className="alert alert-danger py-2" role="alert">
-                                Error:{values.error}
+                                Error : {values.error}
                             </div>)}
                             {values.success && <Navigate to="/user/ordersuccess" />}
                         </form>
