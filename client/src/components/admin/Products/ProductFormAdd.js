@@ -27,19 +27,23 @@ const ProductFormAdd = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
-        const user = JSON.parse(localStorage.getItem("sample"))
-        axios.post('http://localhost:8000/api/product/create/' + user._id, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        }).then(response => {
-            setValues({ ...values, success: true, error: false });
-            console.log(response);
-            window.location.reload();
-        }).catch(error => {
-            setValues({ ...values, error: error.response.data.error, success: false });
-            console.log(error);
-        })
+        if (!name || !category || !description || !price) {
+            setValues({ ...values, error: "Please Fill All Fields!!!", success: false });
+        } else {
+            const user = JSON.parse(localStorage.getItem("sample"))
+            axios.post('http://localhost:8000/api/product/create/' + user._id, formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }).then(response => {
+                setValues({ ...values, success: true, error: false });
+                console.log(response);
+                window.location.reload();
+            }).catch(error => {
+                setValues({ ...values, error: error.response.data.error, success: false });
+                console.log(error);
+            })
+        }
 
     };
 
