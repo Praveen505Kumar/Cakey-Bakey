@@ -2,7 +2,7 @@ import { Link, NavLink } from 'react-router-dom'
 import logo from '../images/logo.jpeg'
 const Footer = () => {
   return (
-    <div className='bg-light'>
+    <div className='header'>
       <div className="container p-3 text-center">
         <div className='row mb-3'>
           <div className='company-info col-md-4'>
