@@ -10,7 +10,7 @@ router.param("userId", getUserById);
 router.post("/order/create/:userId", isSignedIn, isAuthenticated, pushOrderInPurchaseList, createOrder);
 router.get("/order/all/:userId", isSignedIn, isAuthenticated, isAdmin, getAllOrders);
 router.get("/order/all/user/:userId", isSignedIn, isAuthenticated, getAllOrdersByUser);
-router.get("/order/status/:userId", isSignedIn, isAuthenticated, isAdmin, getOrderStatus);
-router.get("/order/:orderId/status/:userId", isSignedIn, isAuthenticated, isAdmin, updateStatus);
+// router.get("/order/status/:userId", isSignedIn, isAuthenticated, isAdmin, getOrderStatus);
+// router.get("/order/:orderId/status/:userId", isSignedIn, isAuthenticated, isAdmin, updateStatus);
 
 module.exports = router;
