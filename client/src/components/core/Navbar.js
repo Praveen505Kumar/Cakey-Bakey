@@ -57,7 +57,7 @@ const Navbar = () => {
     }
   };
   return (
-    <div className="fixed-top bg-light">
+    <div className="fixed-top header">
       <div className="navbar navbar-expand-lg navbar-light">
         <div className="container">
           <Link to="/" className="text-decoration-none navbar-brand ">
