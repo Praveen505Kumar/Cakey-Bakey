@@ -41,8 +41,9 @@
 
 }
 
-.admin {
-  background: linear-gradient(90deg, #4ca1af, #c4e0e5);
+.header {
+  background-color: #c4e0e5
+    /* background: linear-gradient(90deg, #4ca1af, #c4e0e5); */
 }
 
 .adminscrn {
