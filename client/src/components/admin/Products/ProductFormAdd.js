@@ -29,7 +29,11 @@ const ProductFormAdd = () => {
         console.log(formData);
         if (!name || !category || !description || !price) {
             setValues({ ...values, error: "Please Fill All Fields!!!", success: false });
-        } else {
+        }
+        else if (price < 0) {
+            setValues({ ...values, error: "Price should be Positive", success: false });
+        }
+        else {
             const user = JSON.parse(localStorage.getItem("sample"))
             axios.post('http://localhost:8000/api/product/create/' + user._id, formData, {
                 headers: {
@@ -86,7 +90,7 @@ const ProductFormAdd = () => {
                             name="name"
                             className="form-control"
                             placeholder="Name"
-                            required
+
                             onChange={handleChange}
 
                         />
@@ -98,7 +102,7 @@ const ProductFormAdd = () => {
                             name="description"
                             className="form-control"
                             placeholder="Description"
-                            required
+
                             onChange={handleChange}
                         ></textarea>
                     </div>
@@ -107,14 +111,14 @@ const ProductFormAdd = () => {
                     <label class="col-sm-4 col-form-label">Photo :</label>
                     <div class="col-sm-7 my-2">
                         <input id="upload" type="file" name="photo" accept="image/*" class="form-control" onChange={handleFileChange}
-                            required />
+                        />
                     </div>
                 </div>
                 <div class="row mb-3">
                     <label class="col-sm-4 col-form-label my-1">Price in <b>Rs</b> :</label>
                     <div class="col-sm-7 my-2">
                         <input type="number" id="quantity" name="price"
-                            required
+
                             onChange={handleChange} />
                     </div>
                 </div>
